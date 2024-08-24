@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000045 !important;
+    color: #f0f0f0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #0B0570;
+    position: relative;
+}
+
+.navbar-left {
+    margin-right: auto;
+    padding-left: 29px;
+}
+
+.navbar-right {
+    margin-left: auto;
+}
+
+.navbar-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #0B0570;
+}
+
+.navbar-sub-left, .navbar-sub-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-sub-left {
+    margin-right: auto;
+}
+
+.navbar-sub-right {
+    margin-left: auto;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+    margin-right: 40px;
+}
+
+.nav-login {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.nav-login i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.nav-login .login-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-login .login {
+    color: #8DC07E;
+    font-weight: bold;
+}
+
+.nav-login .register {
+    color: #8DC07E;
+}
+
+.navbar-underline {
+    background-color: #8DC07E;
+    height: 6px;
+    width: 100%;
+}
+
+.nav-sub-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 40px;
+}
+
+.nav-sub-item:hover {
+    text-decoration: underline;
+}
+
+.nav-phone,
+.nav-whatsapp {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.nav-phone {
+    background-color: #8DC07E;
+}
+
+.nav-whatsapp {
+    background-color: #ffffff;
+    color: #8DC07E;
+}
+
+.nav-whatsapp i {
+    color: #8DC07E;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 25px;
+}
+
+
+.carousel-inner img {
+    height: 687px;
+    object-fit: cover;
+    width: 100%;
+}
