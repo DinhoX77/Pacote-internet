@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-size: 16px; /* Tamanho base aumentado para melhor legibilidade */
+    font-family: Passion One, sans-serif;
     background-color: #000045 !important;
     color: #f0f0f0;
 }
@@ -10,25 +11,54 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 30px;
+    padding: 10px 30px; /* Aumenta o padding */
     background-color: #0B0570;
     position: relative;
 }
 
 .navbar-left {
     margin-right: auto;
-    padding-left: 29px;
+    padding-left: 30px; /* Ajusta o padding */
 }
 
 .navbar-right {
     margin-left: auto;
 }
 
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px; /* Aumenta o tamanho da fonte */
+    margin-right: 30px; /* Ajusta o espaçamento entre os itens */
+}
+
+.nav-login {
+    color: white;
+    text-decoration: none;
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    display: flex;
+    align-items: center;
+    margin-left: 30px; /* Ajusta o espaçamento à esquerda */
+    margin-right: 30px; /* Ajusta o espaçamento à direita */
+}
+
+.nav-login i {
+    font-size: 24px; /* Aumenta o tamanho do ícone */
+    margin-right: 10px; /* Ajusta o espaçamento entre o ícone e o texto */
+}
+
+.navbar-underline {
+    background-color: #8DC07E;
+    height: 6px; /* Aumenta a altura da linha de destaque */
+    width: 100%;
+}
+
 .navbar-sub {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 30px;
+    padding: 10px 30px; /* Aumenta o padding */
     background-color: #0B0570;
 }
 
@@ -45,55 +75,12 @@ body {
     margin-left: auto;
 }
 
-.nav-item {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 22px;
-    margin-right: 40px;
-}
-
-.nav-login {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-.nav-login i {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.nav-login .login-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-login .login {
-    color: #8DC07E;
-    font-weight: bold;
-}
-
-.nav-login .register {
-    color: #8DC07E;
-}
-
-.navbar-underline {
-    background-color: #8DC07E;
-    height: 6px;
-    width: 100%;
-}
-
 .nav-sub-item {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 18px;
-    margin-right: 40px;
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    margin-right: 30px; /* Ajusta o espaçamento entre os itens */
 }
 
 .nav-sub-item:hover {
@@ -104,12 +91,12 @@ body {
 .nav-whatsapp {
     display: flex;
     align-items: center;
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 10px 20px; /* Aumenta o padding */
+    border-radius: 20px; /* Ajusta o arredondamento dos cantos */
     text-decoration: none;
     color: white;
-    margin-left: 10px;
-    font-size: 16px;
+    margin-left: 12px; /* Ajusta o espaçamento */
+    font-size: 18px; /* Aumenta o tamanho da fonte */
 }
 
 .nav-phone {
@@ -130,46 +117,47 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-top: 25px;
+    margin-top: 30px; /* Ajusta o espaçamento superior */
 }
 
 .carousel-inner img {
-    height: 687px;
-    object-fit: cover;
+    height: 500px; /* Aumenta a altura das imagens do carrossel */
+    object-fit: cover; /* Mantém a proporção da imagem */
     width: 100%;
 }
 
 /* Container dos cards */
-.container-card {
+.container-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px; /* Espaçamento entre os cards */
-    padding: 20px;
+    justify-content: center; /* Alinha os cards horizontalmente ao centro */
+    gap: 20px; /* Espaço entre os cards */
+    padding: 20px; /* Espaçamento interno da container */
 }
 
 /* Estilização do card */
 .card-plano {
-    width: 300px;
-    height: 500px;
+    width: 260px; /* Largura do card */
+    height: 400px; /* Altura do card */
     background: rgba(98,179,244,1);
-    border: 8px solid rgba(255,255,255,1);
-    border-radius: 50px;
+    border: 6px solid rgba(255,255,255,1); /* Borda do card */
+    border-radius: 30px; /* Bordas arredondadas */
     overflow: hidden;
     position: relative;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Sombra do card */
+    padding: 20px; /* Espaçamento interno do card */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Estilização dos textos e preços dentro dos cards */
 .card-cabecalho {
-    width: 300px; /* Ajuste a largura conforme necessário */
-    height: 60px;
+    width: 260px; /* Largura do cabeçalho */
+    height: 50px; /* Altura do cabeçalho */
     background: rgba(255,255,255,1);
-    border-radius: 50px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Sombra do cabeçalho */
     position: absolute;
     top: 0;
     left: 0;
@@ -181,12 +169,14 @@ body {
 .texto-velocidade {
     font-family: Passion One, sans-serif;
     font-weight: Regular;
-    font-size: 47px;
+    font-size: 28px; /* Tamanho da fonte */
     text-align: center;
 }
 
 .texto-velocidade .numero {
-    color: #8DC07E; /* Cor verde para "400" */
+    color: #8DC07E; /* Cor verde para "100" */
+    font-family: Passion One, sans-serif; /* Fonte Passion One */
+    font-size: 32px; /* Tamanho da fonte */
 }
 
 .texto-velocidade .unidade {
@@ -194,13 +184,13 @@ body {
 }
 
 .card-preco-container {
-    width: 200px;
-    height: 60px;
+    width: 220px; /* Largura do container do preço */
+    height: 50px; /* Altura do container do preço */
     background: rgba(35,53,156,1);
-    border-radius: 50px;
+    border-radius: 30px; /* Bordas arredondadas */
     position: absolute;
-    top: 100px; /* Ajustado para centralizar verticalmente */
-    left: calc(50% - 100px);
+    top: 60px; /* Distância do topo */
+    left: calc(50% - 110px); /* Centraliza horizontalmente */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,18 +198,18 @@ body {
 
 .texto-preco {
     color: #62b3f4; /* Cor azul para "Por Apenas" */
-    font-family: Passion One, sans-serif;
+    font-family: Passion One, sans-serif; /* Fonte Passion One */
     font-weight: Regular;
-    font-size: 30px;
+    font-size: 22px; /* Tamanho da fonte */
     text-align: center;
 }
 
 .card-descricao {
-    width: 250px;
-    height: 120px;
+    width: 220px; /* Largura da descrição */
+    height: 80px; /* Altura da descrição */
     position: absolute;
-    top: 180px; /* Ajustado para centralizar verticalmente */
-    left: calc(50% - 125px);
+    top: 120px; /* Distância do topo */
+    left: calc(50% - 110px); /* Centraliza horizontalmente */
     text-align: center;
 }
 
@@ -228,36 +218,38 @@ body {
     flex-direction: column;
     align-items: center; /* Centraliza horizontalmente */
     position: relative;
-    margin-top: 60px; /* Ajustado para centralizar verticalmente */
+    margin-top: 50px; /* Margem superior */
 }
 
 .preco-simbolo {
     color: #394aab; /* Cor azul para o símbolo "R$" */
-    font-size: 50px;
+    font-size: 35px; /* Tamanho da fonte */
     position: absolute;
-    top: -40px; /* Alinha o símbolo no topo do container */
-    left: 20px; /* Ajuste conforme necessário para alinhar à esquerda do valor */
+    top: -25px; /* Distância do topo */
+    left: 15px; /* Alinhamento à esquerda do valor */
+    font-family: Passion One, sans-serif; /* Fonte Passion One */
 }
 
 .preco-valor {
     color: #FFFFFF; /* Cor branca para o valor "99,99" */
-    font-size: 60px;
+    font-size: 45px; /* Tamanho da fonte */
     margin-left: 0;
+    font-family: Passion One, sans-serif; /* Fonte Passion One */
 }
 
 .botao-assinar {
-    width: 150px;
-    height: 50px;
+    width: 120px; /* Largura do botão */
+    height: 45px; /* Altura do botão */
     position: absolute;
-    top: 400px; /* Ajustado para centralizar verticalmente */
-    left: calc(50% - 75px); /* Centraliza o botão */
+    top: 290px; /* Distância do topo */
+    left: calc(50% - 60px); /* Centraliza horizontalmente */
     background-color: white; /* Cor de fundo do botão */
     color: #8DC07E; /* Cor do texto */
-    font-family: Arial, sans-serif;
+    font-family: Passion One, sans-serif; /* Fonte Passion One */
     font-weight: bold;
-    font-size: 24px;
+    font-size: 18px; /* Tamanho da fonte */
     border: none;
-    border-radius: 25px; /* Bordas arredondadas */
+    border-radius: 20px; /* Bordas arredondadas */
     cursor: pointer;
     display: flex;
     justify-content: center;
