@@ -5,6 +5,7 @@ body {
     color: #f0f0f0;
 }
 
+/* Estilização da navbar */
 .navbar {
     display: flex;
     justify-content: center;
@@ -124,6 +125,7 @@ body {
     color: #8DC07E;
 }
 
+/* Estilização do carrossel */
 .carousel {
     position: relative;
     width: 100%;
@@ -131,9 +133,137 @@ body {
     margin-top: 25px;
 }
 
-
 .carousel-inner img {
     height: 687px;
     object-fit: cover;
     width: 100%;
+}
+
+/* Container dos cards */
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre os cards */
+    padding: 20px;
+}
+
+/* Estilização do card */
+.card-plano {
+    width: 300px;
+    height: 500px;
+    background: rgba(98,179,244,1);
+    border: 8px solid rgba(255,255,255,1);
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-cabecalho {
+    width: 300px; /* Ajuste a largura conforme necessário */
+    height: 60px;
+    background: rgba(255,255,255,1);
+    border-radius: 50px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-velocidade {
+    font-family: Passion One, sans-serif;
+    font-weight: Regular;
+    font-size: 47px;
+    text-align: center;
+}
+
+.texto-velocidade .numero {
+    color: #8DC07E; /* Cor verde para "400" */
+}
+
+.texto-velocidade .unidade {
+    color: #62B3F4; /* Cor azul para "MB" */
+}
+
+.card-preco-container {
+    width: 200px;
+    height: 60px;
+    background: rgba(35,53,156,1);
+    border-radius: 50px;
+    position: absolute;
+    top: 100px; /* Ajustado para centralizar verticalmente */
+    left: calc(50% - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-preco {
+    color: #62b3f4; /* Cor azul para "Por Apenas" */
+    font-family: Passion One, sans-serif;
+    font-weight: Regular;
+    font-size: 30px;
+    text-align: center;
+}
+
+.card-descricao {
+    width: 250px;
+    height: 120px;
+    position: absolute;
+    top: 180px; /* Ajustado para centralizar verticalmente */
+    left: calc(50% - 125px);
+    text-align: center;
+}
+
+.preco {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    position: relative;
+    margin-top: 60px; /* Ajustado para centralizar verticalmente */
+}
+
+.preco-simbolo {
+    color: #394aab; /* Cor azul para o símbolo "R$" */
+    font-size: 50px;
+    position: absolute;
+    top: -40px; /* Alinha o símbolo no topo do container */
+    left: 20px; /* Ajuste conforme necessário para alinhar à esquerda do valor */
+}
+
+.preco-valor {
+    color: #FFFFFF; /* Cor branca para o valor "99,99" */
+    font-size: 60px;
+    margin-left: 0;
+}
+
+.botao-assinar {
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    top: 400px; /* Ajustado para centralizar verticalmente */
+    left: calc(50% - 75px); /* Centraliza o botão */
+    background-color: white; /* Cor de fundo do botão */
+    color: #8DC07E; /* Cor do texto */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    border: none;
+    border-radius: 25px; /* Bordas arredondadas */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-assinar:hover {
+    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
 }
