@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-size: 16px; /* Tamanho base aumentado para melhor legibilidade */
+    font-size: 16px;
     font-family: Passion One, sans-serif;
     background-color: #000045 !important;
     color: #f0f0f0;
@@ -11,14 +11,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 30px; /* Aumenta o padding */
+    padding: 10px 30px;
     background-color: #0B0570;
     position: relative;
 }
 
 .navbar-left {
     margin-right: auto;
-    padding-left: 30px; /* Ajusta o padding */
+    padding-left: 30px;
 }
 
 .navbar-right {
@@ -29,28 +29,28 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 20px; /* Aumenta o tamanho da fonte */
-    margin-right: 30px; /* Ajusta o espaçamento entre os itens */
+    font-size: 20px;
+    margin-right: 30px;
 }
 
 .nav-login {
     color: white;
     text-decoration: none;
-    font-size: 18px; /* Aumenta o tamanho da fonte */
+    font-size: 18px;
     display: flex;
     align-items: center;
-    margin-left: 30px; /* Ajusta o espaçamento à esquerda */
-    margin-right: 30px; /* Ajusta o espaçamento à direita */
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .nav-login i {
-    font-size: 24px; /* Aumenta o tamanho do ícone */
-    margin-right: 10px; /* Ajusta o espaçamento entre o ícone e o texto */
+    font-size: 24px;
+    margin-right: 10px;
 }
 
 .navbar-underline {
     background-color: #8DC07E;
-    height: 6px; /* Aumenta a altura da linha de destaque */
+    height: 6px;
     width: 100%;
 }
 
@@ -58,7 +58,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 30px; /* Aumenta o padding */
+    padding: 10px 30px;
     background-color: #0B0570;
 }
 
@@ -79,8 +79,8 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 18px; /* Aumenta o tamanho da fonte */
-    margin-right: 30px; /* Ajusta o espaçamento entre os itens */
+    font-size: 18px;
+    margin-right: 30px;
 }
 
 .nav-sub-item:hover {
@@ -91,12 +91,12 @@ body {
 .nav-whatsapp {
     display: flex;
     align-items: center;
-    padding: 10px 20px; /* Aumenta o padding */
-    border-radius: 20px; /* Ajusta o arredondamento dos cantos */
+    padding: 10px 20px;
+    border-radius: 20px;
     text-decoration: none;
     color: white;
-    margin-left: 12px; /* Ajusta o espaçamento */
-    font-size: 18px; /* Aumenta o tamanho da fonte */
+    margin-left: 12px;
+    font-size: 18px;
 }
 
 .nav-phone {
@@ -117,47 +117,52 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-top: 30px; /* Ajusta o espaçamento superior */
+    margin-top: 30px;
 }
 
 .carousel-inner img {
-    height: 500px; /* Aumenta a altura das imagens do carrossel */
-    object-fit: cover; /* Mantém a proporção da imagem */
+    height: 500px;
+    object-fit: cover;
     width: 100%;
 }
 
 /* Container dos cards */
-.container-cards {
+.container-card {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Alinha os cards horizontalmente ao centro */
-    gap: 20px; /* Espaço entre os cards */
-    padding: 20px; /* Espaçamento interno da container */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    gap: 30px; /* Espaçamento entre os cards */
+    padding: 20px;
 }
 
 /* Estilização do card */
 .card-plano {
-    width: 260px; /* Largura do card */
-    height: 400px; /* Altura do card */
+    width: 260px;
+    height: 400px;
     background: rgba(98,179,244,1);
-    border: 6px solid rgba(255,255,255,1); /* Borda do card */
-    border-radius: 30px; /* Bordas arredondadas */
+    border: 6px solid rgba(255,255,255,1);
+    border-radius: 30px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Sombra do card */
-    padding: 20px; /* Espaçamento interno do card */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Remove o margin-right do último card em cada linha */
+.container-card > .card-plano:last-child {
+    margin-right: 0;
+}
+
 /* Estilização dos textos e preços dentro dos cards */
 .card-cabecalho {
-    width: 260px; /* Largura do cabeçalho */
-    height: 50px; /* Altura do cabeçalho */
+    width: 260px;
+    height: 50px;
     background: rgba(255,255,255,1);
-    border-radius: 30px; /* Bordas arredondadas */
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Sombra do cabeçalho */
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     position: absolute;
     top: 0;
     left: 0;
@@ -169,87 +174,87 @@ body {
 .texto-velocidade {
     font-family: Passion One, sans-serif;
     font-weight: Regular;
-    font-size: 28px; /* Tamanho da fonte */
+    font-size: 28px;
     text-align: center;
 }
 
 .texto-velocidade .numero {
-    color: #8DC07E; /* Cor verde para "100" */
-    font-family: Passion One, sans-serif; /* Fonte Passion One */
-    font-size: 32px; /* Tamanho da fonte */
+    color: #8DC07E;
+    font-family: Passion One, sans-serif;
+    font-size: 32px;
 }
 
 .texto-velocidade .unidade {
-    color: #62B3F4; /* Cor azul para "MB" */
+    color: #62B3F4;
 }
 
 .card-preco-container {
-    width: 220px; /* Largura do container do preço */
-    height: 50px; /* Altura do container do preço */
+    width: 220px;
+    height: 50px;
     background: rgba(35,53,156,1);
-    border-radius: 30px; /* Bordas arredondadas */
+    border-radius: 30px;
     position: absolute;
-    top: 60px; /* Distância do topo */
-    left: calc(50% - 110px); /* Centraliza horizontalmente */
+    top: 60px;
+    left: calc(50% - 110px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .texto-preco {
-    color: #62b3f4; /* Cor azul para "Por Apenas" */
-    font-family: Passion One, sans-serif; /* Fonte Passion One */
+    color: #62b3f4;
+    font-family: Passion One, sans-serif;
     font-weight: Regular;
-    font-size: 22px; /* Tamanho da fonte */
+    font-size: 22px;
     text-align: center;
 }
 
 .card-descricao {
-    width: 220px; /* Largura da descrição */
-    height: 80px; /* Altura da descrição */
+    width: 220px;
+    height: 80px;
     position: absolute;
-    top: 120px; /* Distância do topo */
-    left: calc(50% - 110px); /* Centraliza horizontalmente */
+    top: 120px;
+    left: calc(50% - 110px);
     text-align: center;
 }
 
 .preco {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
+    align-items: center;
     position: relative;
-    margin-top: 50px; /* Margem superior */
+    margin-top: 50px;
 }
 
 .preco-simbolo {
-    color: #394aab; /* Cor azul para o símbolo "R$" */
-    font-size: 35px; /* Tamanho da fonte */
+    color: #394aab;
+    font-size: 35px;
     position: absolute;
-    top: -25px; /* Distância do topo */
-    left: 15px; /* Alinhamento à esquerda do valor */
-    font-family: Passion One, sans-serif; /* Fonte Passion One */
+    top: -25px;
+    left: 15px;
+    font-family: Passion One, sans-serif;
 }
 
 .preco-valor {
-    color: #FFFFFF; /* Cor branca para o valor "99,99" */
-    font-size: 45px; /* Tamanho da fonte */
+    color: #FFFFFF;
+    font-size: 45px;
     margin-left: 0;
-    font-family: Passion One, sans-serif; /* Fonte Passion One */
+    font-family: Passion One, sans-serif;
 }
 
 .botao-assinar {
-    width: 120px; /* Largura do botão */
-    height: 45px; /* Altura do botão */
+    width: 120px;
+    height: 45px;
     position: absolute;
-    top: 290px; /* Distância do topo */
-    left: calc(50% - 60px); /* Centraliza horizontalmente */
-    background-color: white; /* Cor de fundo do botão */
-    color: #8DC07E; /* Cor do texto */
-    font-family: Passion One, sans-serif; /* Fonte Passion One */
+    top: 290px;
+    left: calc(50% - 60px);
+    background-color: white;
+    color: #8DC07E;
+    font-family: Passion One, sans-serif;
     font-weight: bold;
-    font-size: 18px; /* Tamanho da fonte */
+    font-size: 18px;
     border: none;
-    border-radius: 20px; /* Bordas arredondadas */
+    border-radius: 20px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -257,5 +262,5 @@ body {
 }
 
 .botao-assinar:hover {
-    background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+    background-color: #f0f0f0;
 }
