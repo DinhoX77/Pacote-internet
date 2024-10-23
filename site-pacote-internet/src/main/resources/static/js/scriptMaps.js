@@ -108,3 +108,37 @@ document.getElementById('numero').addEventListener('blur', function() {
         atualizarMapa(logradouro, cidade, numero);
     }
 });
+
+// Formatação de CPF
+    function formatCPF(value) {
+        return value.replace(/\D/g, '')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d)/, '$1.$2')
+            .replace(/(\d{3})(\d{2})$/, '$1-$2');
+    }
+
+    // Formatação de Telefone
+    function formatTelefone(value) {
+        return value.replace(/\D/g, '')
+            .replace(/(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{5})(\d)/, '$1-$2');
+    }
+
+    // Formatação de CEP
+    function formatCEP(value) {
+        return value.replace(/\D/g, '')
+            .replace(/(\d{5})(\d)/, '$1-$2');
+    }
+
+    // Event listeners para os campos
+    document.getElementById('cpf').addEventListener('input', function(e) {
+        e.target.value = formatCPF(e.target.value);
+    });
+
+    document.getElementById('telefone').addEventListener('input', function(e) {
+        e.target.value = formatTelefone(e.target.value);
+    });
+
+    document.getElementById('cep').addEventListener('input', function(e) {
+        e.target.value = formatCEP(e.target.value);
+    });
