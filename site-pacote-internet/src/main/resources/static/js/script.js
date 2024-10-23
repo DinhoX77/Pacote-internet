@@ -1,3 +1,4 @@
+// Carrossel
 const slides = document.querySelectorAll('.carousel-slide');
 const prevButton = document.querySelector('.carousel-prev');
 const nextButton = document.querySelector('.carousel-next');
@@ -22,3 +23,4 @@ nextButton.addEventListener('click', () => {
 
 // Inicia o carrossel mostrando o primeiro slide
 showSlide(currentSlide);
+
