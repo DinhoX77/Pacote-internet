@@ -62,52 +62,59 @@
                 <label for="telefone" class="form-label">Telefone</label>
                 <input type="tel" class="form-control" id="telefone" name="telefone" required>
             </div>
-            <h4>Endereço de Instalação</h4>
-            <div class="mb-3">
-                <label for="cep" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cep" name="cep" required>
-            </div>
-            <div class="mb-3">
-                <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="cidade" name="cidade" required>
-            </div>
-            <div class="mb-3">
-                <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="bairro" name="bairro" required>
-            </div>
-            <div class="mb-3 row">
-                <div class="col">
-                    <label for="rua" class="form-label">Rua</label>
-                    <input type="text" class="form-control" id="rua" name="rua" required>
-                </div>
-                <div class="col-auto">
-                    <label for="numero" class="form-label">Número</label>
-                    <input type="text" class="form-control" id="numero" name="numero" required>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="complemento" class="form-label">Complemento</label>
-                <input type="text" class="form-control" id="complemento" name="complemento">
-            </div>
-            <div class="mb-3">
-                <label for="ponto-referencia" class="form-label">Ponto de referência</label>
-                <input type="text" class="form-control" id="ponto-referencia" name="ponto-referencia">
-            </div>
-            <div class="mb-3">
-                <label for="tipo-imovel" class="form-label">Tipo de imóvel</label>
-                <select class="form-control" id="tipo-imovel" name="tipo-imovel" required>
-                    <option value="" disabled selected>Selecione</option>
-                    <option value="Apartamento">Apartamento</option>
-                    <option value="Casa">Casa</option>
-                    <option value="Comércio">Comércio</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
-    </div>
 
-    <div class="cadastro-mapa">
-        <div id="mapa-simulacao"></div>
+            <h4>Endereço de Instalação</h4>
+            <div class="endereco-instalacao">
+                <!-- Campos de endereço de instalação -->
+                <div class="endereco-form">
+                    <div class="mb-3">
+                        <label for="cep" class="form-label">CEP</label>
+                        <input type="text" class="form-control" id="cep" name="cep" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" name="cidade" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bairro" class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" name="bairro" required>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col">
+                            <label for="rua" class="form-label">Rua</label>
+                            <input type="text" class="form-control" id="rua" name="rua" required>
+                        </div>
+                        <div class="col-auto">
+                            <label for="numero" class="form-label">Número</label>
+                            <input type="text" class="form-control" id="numero" name="numero" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="complemento" class="form-label">Complemento</label>
+                        <input type="text" class="form-control" id="complemento" name="complemento">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ponto-referencia" class="form-label">Ponto de referência</label>
+                        <input type="text" class="form-control" id="ponto-referencia" name="ponto-referencia">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipo-imovel" class="form-label">Tipo de imóvel</label>
+                        <select class="form-control" id="tipo-imovel" name="tipo-imovel" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Comércio">Comércio</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
+
+                <!-- Div do mapa ao lado dos campos de endereço -->
+                <div class="cadastro-mapa">
+                    <div id="mapa-simulacao"></div>
+                </div>
+            </div>
+        </form>
     </div>
 </main>
 
