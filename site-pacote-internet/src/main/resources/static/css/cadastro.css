@@ -1,211 +1,295 @@
-    /* Estilos da página de cadastro */
+body {
+    font-family: Passion One, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d9d9d9; /* Fundo em um tom de cinza */
+}
 
-    /* Container principal do cadastro */
-    body {
-        font-family: Passion One, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-    }
-    /* Estilização da navbar */
-    .navbar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 30px;
-        background-color: #0B0570;
-        position: relative;
-    }
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #0B0570;
+    position: relative;
+}
 
-    .navbar-left {
-        margin-right: auto;
-        padding-left: 30px;
-    }
+.navbar-left {
+    margin-right: auto;
+    padding-left: 30px;
+}
 
-    .navbar-right {
-        margin-left: auto;
-    }
+.navbar-right {
+    margin-left: auto;
+}
 
-    .nav-item {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 20px;
-        margin-right: 30px;
-    }
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 30px;
+}
 
-    .nav-login {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        margin-left: 30px;
-        margin-right: 30px;
-    }
+.nav-login {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
 
-    .nav-login i {
-        font-size: 24px;
-        margin-right: 10px;
-    }
+.nav-login i {
+    font-size: 24px;
+    margin-right: 10px;
+}
 
-    .navbar-underline {
-        background-color: #8DC07E;
-        height: 6px;
-        width: 100%;
-    }
+.navbar-underline {
+    background-color: #8DC07E;
+    height: 6px;
+    width: 100%;
+}
 
-    .navbar-sub {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 30px;
-        background-color: #0B0570;
-    }
+.navbar-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #0B0570;
+}
 
-    .navbar-sub-left, .navbar-sub-right {
-        display: flex;
-        align-items: center;
-    }
+.navbar-sub-left, .navbar-sub-right {
+    display: flex;
+    align-items: center;
+}
 
-    .navbar-sub-left {
-        margin-right: auto;
-    }
+.navbar-sub-left {
+    margin-right: auto;
+}
 
-    .navbar-sub-right {
-        margin-left: auto;
-    }
+.navbar-sub-right {
+    margin-left: auto;
+}
 
-    .nav-sub-item {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 18px;
-        margin-right: 30px;
-    }
+.nav-sub-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 30px;
+}
 
-    .nav-sub-item:hover {
-        text-decoration: underline;
-    }
+.nav-sub-item:hover {
+    text-decoration: underline;
+}
 
-    .nav-phone,
-    .nav-whatsapp {
-        display: flex;
-        align-items: center;
-        padding: 10px 20px;
-        border-radius: 20px;
-        text-decoration: none;
-        color: white;
-        margin-left: 12px;
-        font-size: 18px;
-    }
+.nav-phone,
+.nav-whatsapp {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    margin-left: 12px;
+    font-size: 18px;
+}
 
-    .nav-phone {
-        background-color: #8DC07E;
-    }
+.nav-phone {
+    background-color: #8DC07E;
+}
 
-    .nav-whatsapp {
-        background-color: #ffffff;
-        color: #8DC07E;
-    }
+.nav-whatsapp {
+    background-color: #ffffff;
+    color: #8DC07E;
+}
 
-    .nav-whatsapp i {
-        color: #8DC07E;
-    }
+.nav-whatsapp i {
+    color: #8DC07E;
+}
 
-    .cadastro-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
-        margin: 20px auto;
-        width: 80%;
-        background-color: #8DC07E;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+.cadastro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    background-color: #d9d9d9; /* Fundo branco para o container de cadastro */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-    .cadastro-form {
-        flex: 1;
-        margin-right: 20px;
-    }
+.cadastro-cliente-endereco {
+    display: flex;
+    justify-content: space-between;
+    gap: 240px;
+}
 
-    .cadastro-form h2 {
-        text-align: center;
-        color: #394aab;
-    }
+.cadastro-form {
+    flex: 1;
+}
 
-    .cadastro-form h4 {
-        margin-top: 20px;
-        color: #394aab;
-    }
+.container-card {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
 
-    .form-label {
-        font-weight: bold;
-    }
-
-    .form-control {
-        border: 1px solid #394aab;
-        border-radius: 4px;
-        padding: 10px;
-        width: 100%;
-    }
-
-    .form-control:focus {
-        border-color: #5f6d98;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-primary {
-        background-color: #394aab;
-        border: none;
-        color: white;
-        padding: 10px 15px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-
-    .btn-primary:hover {
-        background-color: #5f6d98;
-    }
-
-    .endereco-instalacao {
-        display: flex;
-        gap: 20px; /* Espaçamento entre o formulário e o mapa */
-    }
-
-    .endereco-form {
-        flex: 1;
-    }
-
-    .cadastro-mapa {
-        flex: 1;
-        height: 400px;
-        border-radius: 8px;
-        padding: 0;
-        background-color: transparent;
-    }
-
-    #mapa-simulacao {
-        width: 100%;
-        height: 100%;
-        border-radius: 8px;
-    }
+.card-plano {
+    width: 260px;
+    height: 400px;
+    background: rgba(98,179,244,1);
+    border: 6px solid rgba(255,255,255,1);
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px; /* Adicione isso para afastar o card */
+}
 
 
-    .cadastro-mapa {
-        flex: 1;
-        height: 400px;
-        border-radius: 8px;
-        padding: 0;
-        background-color: transparent;
-        margin-top: 20px; /* Espaço adicional acima do mapa */
-    }
+.container-card > .card-plano:last-child {
+    margin-right: 0;
+}
 
+.card-cabecalho {
+    width: 260px;
+    height: 50px;
+    background: rgba(255,255,255,1);
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    #mapa-simulacao {
-        width: 100%;
-        height: 100%; /* Usar 100% da altura do container */
-        border-radius: 8px; /* Bordas arredondadas */
-    }
+.texto-velocidade {
+    font-family: Passion One, sans-serif;
+    font-weight: Regular;
+    font-size: 28px;
+    text-align: center;
+}
 
+.texto-velocidade .numero {
+    color: #8DC07E;
+    font-family: Passion One, sans-serif;
+    font-size: 32px;
+}
+
+.texto-velocidade .unidade {
+    color: #62B3F4;
+}
+
+.card-preco-container {
+    width: 220px;
+    height: 50px;
+    background: rgba(35,53,156,1);
+    border-radius: 30px;
+    position: absolute;
+    top: 60px;
+    left: calc(50% - 110px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto-preco {
+    color: #62b3f4;
+    font-family: Passion One, sans-serif;
+    font-weight: Regular;
+    font-size: 22px;
+    text-align: center;
+}
+
+.card-descricao {
+    width: 220px;
+    height: 80px;
+    position: absolute;
+    top: 120px;
+    left: calc(50% - 110px);
+    text-align: center;
+}
+
+.preco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 50px;
+}
+
+.preco-simbolo {
+    color: #394aab;
+    font-size: 35px;
+    position: absolute;
+    top: -25px;
+    left: 15px;
+    font-family: Passion One, sans-serif;
+}
+
+.preco-valor {
+    color: #FFFFFF;
+    font-size: 45px;
+    margin-left: 0;
+    font-family: Passion One, sans-serif;
+}
+
+.botao-assinar {
+    width: 120px;
+    height: 45px;
+    position: absolute;
+    top: 290px;
+    left: calc(50% - 60px);
+    background-color: white;
+    color: #8DC07E;
+    font-family: Passion One, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botao-assinar:hover {
+    background-color: #f0f0f0;
+}
+
+.endereco-instalacao {
+    display: flex;
+    gap: 20px;
+}
+
+.endereco-form {
+    flex: 1;
+}
+
+.cadastro-mapa {
+    flex: 1;
+    height: 400px;
+    border-radius: 8px;
+    padding: 0;
+    background-color: transparent;
+    margin-top: 20px;
+}
+
+#mapa-simulacao {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}

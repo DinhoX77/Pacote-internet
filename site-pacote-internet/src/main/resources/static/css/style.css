@@ -1,4 +1,3 @@
-/* Estilos globais */
 body {
     margin: 0;
     font-size: 16px;
@@ -7,7 +6,6 @@ body {
     color: #f0f0f0;
 }
 
-/* Estilização da navbar */
 .navbar {
     display: flex;
     justify-content: center;
@@ -113,7 +111,6 @@ body {
     color: #8DC07E;
 }
 
-/* Estilização do carrossel */
 .carousel {
     position: relative;
     width: 100%;
@@ -127,7 +124,6 @@ body {
     width: 100%;
 }
 
-/* Seção Conheça nossos Planos 5G */
 .planos-5g {
     display: flex;
     justify-content: center;
@@ -136,7 +132,7 @@ body {
 
 .planos-5g .container {
     width: 100%;
-    max-width: 565px; /* Reduz a largura máxima do container */
+    max-width: 565px;
     position: relative;
 }
 
@@ -160,42 +156,39 @@ body {
 }
 
 .planos-5g .titulo-parte1 {
-    font-size: 36px; /* Ajuste o tamanho conforme necessário */
+    font-size: 36px;
     color: rgba(141, 192, 126, 1);
-    margin-bottom: -20px; /* Ajuste conforme necessário para alinhar corretamente */
+    margin-bottom: -20px;
     margin-right: 135px;
 }
 
 .planos-5g .titulo-parte2 {
-    font-size: 48px; /* Ajuste o tamanho conforme necessário */
+    font-size: 48px;
     color: #fff;
-    margin-left: 135px; /* Remove o espaço da margem esquerda */
+    margin-left: 135px;
 }
 
 .planos-5g .box-icon {
-    width: 100px; /* Ajuste o tamanho conforme necessário */
-    height: 80px; /* Ajuste o tamanho conforme necessário */
+    width: 100px;
+    height: 80px;
     background: url('../img/v39_27.png') no-repeat center center;
     background-size: cover;
     position: absolute;
     top: 0;
-    right: 55px; /* Ajuste conforme necessário */
+    right: 55px;
     border-radius: 30px;
-    transform: rotate(27.36deg); /* Adiciona a rotação */
+    transform: rotate(27.36deg);
 }
 
-
-
-/* Container dos cards */
 .container-card {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza os cards horizontalmente */
-    gap: 30px; /* Espaçamento entre os cards */
+    justify-content: center;
+    gap: 30px;
     padding: 20px;
 }
 
-/* Estilização do card */
+
 .card-plano {
     width: 260px;
     height: 400px;
@@ -211,12 +204,10 @@ body {
     align-items: center;
 }
 
-/* Remove o margin-right do último card em cada linha */
 .container-card > .card-plano:last-child {
     margin-right: 0;
 }
 
-/* Estilização dos textos e preços dentro dos cards */
 .card-cabecalho {
     width: 260px;
     height: 50px;
