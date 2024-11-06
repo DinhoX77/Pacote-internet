@@ -37,27 +37,24 @@
             <a href="#" class="nav-sub-item">Dúvidas</a>
         </div>
         <div class="navbar-sub-right">
-            <!-- Botão para abrir o popup -->
-            <button class="btn-cep" id="verificarBtn">Consulte seu CEP</button>
+            <button class="btn-cep" id="abrirPopup">Consulte seu CEP</button>
             <a href="https://wa.me/5511980008080" class="nav-whatsapp"><i class="fa-brands fa-whatsapp"></i> (11) 98000-8080</a>
         </div>
     </nav>
 </header>
-
 <!-- Popup -->
-<div id="popupCep" class="popup">
+<div id="popupCep" class="popup" style="display: none;">
     <div class="popup-conteudo">
         <span class="fechar" id="fecharPopup">&times;</span>
-        <h2>Verificar Disponibilidade</h2>
+        <h2>Consulte seu CEP</h2>
         <form id="formCep">
             <label for="cep">Digite seu CEP:</label>
-            <input type="text" id="cep" name="cep" required>
+            <input type="text" id="cepPopup" name="cep" required>
             <button type="submit" class="btn-buscar">Buscar</button>
         </form>
         <div id="mapa" style="width: 100%; height: 300px;"></div>
     </div>
 </div>
-
 <!-- Carrossel Bootstrap -->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
