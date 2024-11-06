@@ -315,3 +315,139 @@ body {
 .botao-assinar:hover {
     background-color: #f0f0f0;
 }
+/* Estilo do popup */
+.popup {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garantir que o popup esteja acima de outros conteúdos */
+}
+
+/* Conteúdo do popup */
+.popup-conteudo {
+    background-color: #0B0570; /* Cor de fundo do popup igual ao navbar */
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    font-family: 'Passion One', sans-serif; /* Fonte consistente */
+    color: #f0f0f0; /* Cor do texto para combinar com o tema */
+}
+
+/* Título do popup */
+.popup h2 {
+    font-size: 28px;
+    color: #8DC07E; /* Cor do título em destaque */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Rótulos */
+.popup label {
+    display: block;
+    font-size: 16px;
+    color: #f0f0f0; /* Rótulos em branco */
+    margin-bottom: 10px;
+}
+
+/* Input de texto */
+.popup input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #8DC07E; /* Borda com a cor do botão */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #333; /* Fundo escuro para o input */
+    color: #f0f0f0; /* Cor do texto no input */
+}
+
+/* Botão dentro do popup */
+.popup button {
+    background-color: #8DC07E; /* Cor do botão */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    font-family: 'Passion One', sans-serif;
+}
+
+.popup button:hover {
+    background-color: #62b3f4; /* Cor de hover para o botão */
+}
+
+/* Fechar botão */
+.fechar {
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f0f0f0;
+}
+
+.fechar:hover {
+    color: #8DC07E; /* Cor ao passar o mouse */
+}
+
+/* Mapa */
+#mapa {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Botão de Verificar Disponibilidade */
+.btn-cep {
+    padding: 7px 20px;
+    font-size: 20px;
+    background-color: #8DC07E;  /* Cor de fundo */
+    color: white;
+    border: none;
+    border-radius: 20px;  /* Bordas arredondadas */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Passion One, sans-serif;
+}
+
+.btn-cep:hover {
+    background-color: #62b3f4;  /* Cor ao passar o mouse */
+}
+
+/* Responsividade para dispositivos menores */
+@media (max-width: 768px) {
+    .popup-conteudo {
+        padding: 20px;
+    }
+
+    .popup h2 {
+        font-size: 20px;
+    }
+
+    .popup input[type="text"] {
+        font-size: 14px;
+    }
+
+    .popup button {
+        font-size: 14px;
+    }
+
+    .btn-cep {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
