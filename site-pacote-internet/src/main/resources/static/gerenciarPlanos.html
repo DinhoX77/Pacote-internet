@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Planos - João Net</title>
+    <link rel="stylesheet" href="css/gerenciarPlanos.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Gerenciar Planos</h2>
+
+    <!-- Botão para Adicionar Novo Plano -->
+    <button class="btn-add" onclick="openAddPlanModal()">+ Adicionar Novo Plano</button>
+
+    <!-- Tabela de Planos -->
+    <table id="plans-table">
+        <thead>
+        <tr>
+            <th>Plano</th>
+            <th>Velocidade</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody id="plans-body">
+        <!-- Planos serão preenchidos aqui via JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- Modal para Adicionar/Editar Plano -->
+    <div id="plan-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Adicionar Novo Plano</h3>
+            <form id="plan-form">
+                <input type="hidden" id="plan-id">
+
+                <label for="plan-name">Nome do Plano</label>
+                <input type="text" id="plan-name" required>
+
+                <label for="plan-speed">Velocidade (Mbps)</label>
+                <input type="number" id="plan-speed" required>
+
+                <label for="plan-price">Preço (R$)</label>
+                <input type="number" id="plan-price" required>
+
+                <div class="form-actions">
+                    <button type="submit">Salvar</button>
+                    <button type="button" onclick="closeModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/gerenciarPlanos.js"></script>
+
+</body>
+</html>
