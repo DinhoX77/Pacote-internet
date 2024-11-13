@@ -1,105 +1,56 @@
-// Simulação de dados de planos (utilizado apenas se os dados não forem carregados do backend)
-let plans = [
-    { id: 1, name: 'Plano Básico', speed: 10, price: 79.90 },
-    { id: 2, name: 'Plano Intermediário', speed: 50, price: 149.90 },
-    { id: 3, name: 'Plano Avançado', speed: 100, price: 199.90 }
-];
+// Função para buscar planos e preencher a tabela
+function fetchPlans() {
+    fetch('/api/planos') // O endpoint que retorna os planos
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('plans-body');
+            tableBody.innerHTML = ''; // Limpa a tabela antes de adicionar os planos
 
-// Função para renderizar os planos na tabela
-function renderPlans() {
-    const tbody = document.getElementById('plans-body');
-    tbody.innerHTML = '';
+            data.forEach(plan => {
+                const row = document.createElement('tr');
 
-    plans.forEach(plan => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${plan.name}</td>
-            <td>${plan.speed} Mbps</td>
-            <td>R$ ${plan.price}</td>
-            <td>
-                <button onclick="openEditPlanModal(${plan.id})">Editar</button>
-                <button onclick="deletePlan(${plan.id})">Excluir</button>
-            </td>
-        `;
-        tbody.appendChild(row);
-    });
+                row.innerHTML = `
+                    <td>${plan.nome}</td>
+                    <td>${plan.velocidade}</td>
+                    <td>${plan.preco}</td>
+                    <td>
+                        <button onclick="editPlan(${plan.id})">Editar</button>
+                        <button onclick="deletePlan(${plan.id})">Excluir</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar planos:', error));
 }
 
-// Função para abrir o modal de adicionar/editar plano
+// Chama a função para preencher os planos assim que a página carregar
+window.onload = function() {
+    fetchPlans();
+};
+
+
+// Função para abrir o modal para adicionar novo plano
 function openAddPlanModal() {
-    document.getElementById('plan-modal').style.display = 'flex';
-    document.getElementById('modal-title').innerText = 'Adicionar Novo Plano';
-    document.getElementById('plan-form').reset();
-    document.getElementById('plan-id').value = '';
+    document.getElementById('modal-title').textContent = 'Adicionar Novo Plano';
+    document.getElementById('plan-form').reset(); // Limpa o formulário
+    document.getElementById('plan-id').value = ''; // Reseta o ID do plano
+    document.getElementById('plan-modal').style.display = 'block';
 }
 
-// Função para abrir o modal de edição de plano
-function openEditPlanModal(planId) {
-    const plan = plans.find(p => p.id === planId);
-    document.getElementById('plan-id').value = plan.id;
-    document.getElementById('plan-name').value = plan.name;
-    document.getElementById('plan-speed').value = plan.speed;
-    document.getElementById('plan-price').value = plan.price;
-    document.getElementById('modal-title').innerText = 'Editar Plano';
-
-    document.getElementById('plan-modal').style.display = 'flex';
-}
-
-// Função para salvar o plano (novo ou editado)
-function savePlan(event) {
-    event.preventDefault();
-
-    const planId = document.getElementById('plan-id').value;
-    const name = document.getElementById('plan-name').value;
-    const speed = document.getElementById('plan-speed').value;
-    const price = document.getElementById('plan-price').value;
-
-    const plan = { name, speed, price };
-
-    if (planId) {
-        // Editando plano existente
-        fetch(`/plans/${planId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(plan)
-        })
+// Função para abrir o modal com os dados do plano para editar
+function editPlan(planId) {
+    fetch(`/api/planos/${planId}`) // Endpoint para buscar um plano específico
         .then(response => response.json())
-        .then(() => {
-            fetchPlans();  // Atualiza os planos após a edição
-            closeModal();
+        .then(plan => {
+            document.getElementById('modal-title').textContent = 'Editar Plano';
+            document.getElementById('plan-name').value = plan.nome;
+            document.getElementById('plan-speed').value = plan.velocidade;
+            document.getElementById('plan-price').value = plan.preco;
+            document.getElementById('plan-id').value = plan.id;
+            document.getElementById('plan-modal').style.display = 'block';
         })
-        .catch(error => console.error('Erro ao editar plano:', error));
-    } else {
-        // Adicionando novo plano
-        fetch('/plans', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(plan)
-        })
-        .then(response => response.json())
-        .then(() => {
-            fetchPlans();  // Atualiza os planos após a adição
-            closeModal();
-        })
-        .catch(error => console.error('Erro ao adicionar plano:', error));
-    }
-}
-
-// Função para excluir plano
-function deletePlan(planId) {
-    if (confirm('Tem certeza que deseja excluir este plano?')) {
-        fetch(`/plans/${planId}`, {
-            method: 'DELETE'
-        })
-        .then(() => {
-            fetchPlans();  // Atualiza os planos após a exclusão
-        })
-        .catch(error => console.error('Erro ao excluir plano:', error));
-    }
+        .catch(error => console.error('Erro ao carregar plano:', error));
 }
 
 // Função para fechar o modal
@@ -107,19 +58,59 @@ function closeModal() {
     document.getElementById('plan-modal').style.display = 'none';
 }
 
-// Função para buscar planos do backend
-function fetchPlans() {
-    fetch('/plans')
-        .then(response => response.json())
-        .then(data => {
-            plans = data;
-            renderPlans();
+// Função para adicionar ou editar um plano
+document.getElementById('plan-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const planId = document.getElementById('plan-id').value;
+    const planData = {
+        nome: document.getElementById('plan-name').value,
+        velocidade: document.getElementById('plan-speed').value,
+        preco: document.getElementById('plan-price').value
+    };
+
+    let method = 'POST'; // O método padrão é POST (para criar um novo plano)
+    let url = '/api/planos'; // O endpoint para criar um novo plano
+
+    // Se existir um ID, estamos editando um plano existente
+    if (planId) {
+        method = 'PUT';
+        url = `/api/planos/${planId}`;
+    }
+
+    // Enviar os dados do plano para o backend
+    fetch(url, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(planData)
+    })
+    .then(response => {
+        if (response.ok) {
+            fetchPlans(); // Atualiza a lista de planos
+            closeModal(); // Fecha o modal
+        } else {
+            alert('Erro ao salvar plano');
+        }
+    })
+    .catch(error => console.error('Erro ao salvar plano:', error));
+});
+
+
+// Função para excluir um plano
+function deletePlan(planId) {
+    if (confirm('Tem certeza que deseja excluir este plano?')) {
+        fetch(`/api/planos/${planId}`, {
+            method: 'DELETE'
         })
-        .catch(error => console.error('Erro ao carregar planos:', error));
+        .then(response => {
+            if (response.ok) {
+                fetchPlans(); // Atualiza a lista de planos
+            } else {
+                alert('Erro ao excluir plano');
+            }
+        })
+        .catch(error => console.error('Erro ao excluir plano:', error));
+    }
 }
-
-// Carregar os planos na inicialização
-window.onload = fetchPlans;
-
-// Adicionar evento de submit para o formulário de plano
-document.getElementById('plan-form').addEventListener('submit', savePlan);

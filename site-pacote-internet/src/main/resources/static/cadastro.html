@@ -46,7 +46,7 @@
     <div class="cadastro-cliente-endereco" style="display: flex; gap: 30px;">
         <div class="cadastro-form">
             <h2>Cadastro de Cliente</h2>
-            <form action="/submit-cadastro" method="POST">
+            <form id="cadastroForm" action="/clientes/cadastro" method="POST">
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome completo</label>
                     <input type="text" class="form-control" id="nome" name="nome" required>
@@ -63,6 +63,8 @@
                     <label for="telefone" class="form-label">Telefone</label>
                     <input type="tel" class="form-control" id="telefone" name="telefone" required>
                 </div>
+                <!-- Botão de envio do formulário -->
+                <button type="submit" class="btn btn-primary">Cadastrar Cliente</button>
             </form>
         </div>
 
@@ -92,7 +94,7 @@
     </div>
 
     <h4>Endereço de Instalação</h4>
-    <div class="endereco-instalacao">
+    <div class="endereco-instalacao" style="display: flex; gap: 30px;">
         <!-- Campos de endereço de instalação -->
         <div class="endereco-form">
             <div class="mb-3">
@@ -134,12 +136,11 @@
                     <option value="Comércio">Comércio</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
         </div>
 
         <!-- Div do mapa ao lado dos campos de endereço -->
         <div class="cadastro-mapa">
-            <div id="mapa-simulacao"></div>
+            <div id="mapa-simulacao" style="height: 300px;"></div>
         </div>
     </div>
 </main>
