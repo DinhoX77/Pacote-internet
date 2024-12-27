@@ -1,3 +1,17 @@
+// Abrir modal de adicionar cliente
+function abrirModalAdicionar() {
+  const modal = document.getElementById('modal-cliente');
+  modal.style.display = 'block';
+}
+
+// Fechar modal de adicionar cliente
+function fecharModal() {
+  const modal = document.getElementById('modal-cliente');
+  modal.style.display = 'none';
+  document.getElementById('form-cliente').reset(); // Limpar o formulário
+}
+
+// Adicionar novo cliente
 document.getElementById('form-cliente').addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -35,15 +49,12 @@ document.getElementById('form-cliente').addEventListener('submit', function(even
     plano: plano
   };
 
-  // Enviando a requisição POST para o backend
-  fetch('/clientes', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(cliente)
+  // Simulando o backend para teste
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(cliente);
+    }, 500);
   })
-  .then(response => response.json())
   .then(data => {
     // Adicionando o novo cliente na tabela
     const tableBody = document.getElementById('clientes-list');
@@ -76,3 +87,17 @@ document.getElementById('form-cliente').addEventListener('submit', function(even
   })
   .catch(error => console.error('Erro ao adicionar cliente:', error));
 });
+
+// Função de editar cliente (esqueleto)
+function editarCliente(button) {
+  const row = button.parentElement.parentElement;
+  const nome = row.cells[0].textContent;
+  alert(`Editar cliente: ${nome}`);
+  // Aqui você pode preencher os campos do modal com os dados do cliente para edição
+}
+
+// Função de excluir cliente
+function excluirCliente(button) {
+  const row = button.parentElement.parentElement;
+  row.remove(); // Remove a linha da tabela
+}
