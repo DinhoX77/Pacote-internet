@@ -593,7 +593,6 @@ body {
     }
 }
 
-/* Estilos para telas com largura máxima de 768px */
 @media (max-width: 768px) {
 
     /* Estilo para a navbar e seus itens */
@@ -626,14 +625,18 @@ body {
 
     /* Estilo para a seção dos cards */
     .container-card {
+        display: flex;
         flex-direction: column;
         gap: 15px;
-        padding: 10px;
+        padding: 25px;
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza o conteúdo no centro */
     }
 
     .card-plano {
-        width: 100%;
+        width: 260px;
         max-width: 100%;
+        margin: 0; /* Remove qualquer margem lateral extra */
     }
 
     /* Ajuste do footer para telas menores */
