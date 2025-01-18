@@ -73,6 +73,11 @@ body {
 .navbar-sub-right {
     margin-left: auto;
 }
+.navbar-nav{
+    --bs-nav-link-color:unset !important;
+    --bs-nav-link-hover-color:unset !important;
+    --bs-nav-link-disabled-color:unset !important;
+}
 
 .nav-sub-item {
     color: white;
@@ -99,16 +104,27 @@ body {
 }
 
 .nav-phone {
-    background-color: #8DC07E;
+    background-color: #8DC07E !important;
+    color: #fff !important;
 }
 
 .nav-whatsapp {
-    background-color: #ffffff;
-    color: #8DC07E;
+    background-color: #ffffff !important;
+    color: #8DC07E !important;
 }
 
 .nav-whatsapp i {
     color: #8DC07E;
+}
+
+.btn{
+    padding: 10px 20px !important;
+    border-radius: 20px !important;
+    text-decoration: none !important;
+}
+
+navbar-toggler{
+    color: #FFFFFF !important;
 }
 
 .carousel {
