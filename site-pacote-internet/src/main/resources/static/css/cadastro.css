@@ -112,184 +112,133 @@ body {
 
 .cadastro-container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: column; /* Organiza os elementos em coluna */
     padding: 20px;
     margin: 20px auto;
     width: 80%;
-    background-color: #d9d9d9; /* Fundo branco para o container de cadastro */
+    background-color: #fff; /* Fundo branco para o container de cadastro */
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.cadastro-cliente-endereco {
+.form-sections {
     display: flex;
     justify-content: space-between;
-    gap: 240px;
-}
-
-.cadastro-form {
-    flex: 1;
-}
-
-.container-card {
-    flex: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 30px;
-    padding: 20px;
 }
 
-.card-plano {
-    width: 260px;
-    height: 400px;
-    background: rgba(98,179,244,1);
-    border: 6px solid rgba(255,255,255,1);
-    border-radius: 30px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 30px; /* Adicione isso para afastar o card */
-}
-
-
-.container-card > .card-plano:last-child {
-    margin-right: 0;
-}
-
-.card-cabecalho {
-    width: 260px;
-    height: 50px;
-    background: rgba(255,255,255,1);
-    border-radius: 30px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.texto-velocidade {
-    font-family: Passion One, sans-serif;
-    font-weight: Regular;
-    font-size: 28px;
-    text-align: center;
-}
-
-.texto-velocidade .numero {
-    color: #8DC07E;
-    font-family: Passion One, sans-serif;
-    font-size: 32px;
-}
-
-.texto-velocidade .unidade {
-    color: #62B3F4;
-}
-
-.card-preco-container {
-    width: 220px;
-    height: 50px;
-    background: rgba(35,53,156,1);
-    border-radius: 30px;
-    position: absolute;
-    top: 60px;
-    left: calc(50% - 110px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.texto-preco {
-    color: #62b3f4;
-    font-family: Passion One, sans-serif;
-    font-weight: Regular;
-    font-size: 22px;
-    text-align: center;
-}
-
-.card-descricao {
-    width: 220px;
-    height: 80px;
-    position: absolute;
-    top: 120px;
-    left: calc(50% - 110px);
-    text-align: center;
-}
-
-.preco {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin-top: 50px;
-}
-
-.preco-simbolo {
-    color: #394aab;
-    font-size: 35px;
-    position: absolute;
-    top: -25px;
-    left: 15px;
-    font-family: Passion One, sans-serif;
-}
-
-.preco-valor {
-    color: #FFFFFF;
-    font-size: 45px;
-    margin-left: 0;
-    font-family: Passion One, sans-serif;
-}
-
-.botao-assinar {
-    width: 120px;
-    height: 45px;
-    position: absolute;
-    top: 290px;
-    left: calc(50% - 60px);
-    background-color: white;
-    color: #8DC07E;
-    font-family: Passion One, sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.botao-assinar:hover {
-    background-color: #f0f0f0;
-}
-
-.endereco-instalacao {
-    display: flex;
-    gap: 20px;
-}
-
-.endereco-form {
-    flex: 1;
-}
-
-.cadastro-mapa {
-    flex: 1;
-    height: 400px;
-    border-radius: 8px;
-    padding: 0;
-    background-color: transparent;
-    margin-top: 20px;
-}
-
-#mapa-simulacao {
+.form-info,
+.form-address {
     width: 100%;
-    height: 100%;
-    border-radius: 8px;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start; /* Alinha o botão à esquerda */
+}
+
+.form-actions button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-actions button:hover {
+    background-color: #45a049;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-sections {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-info,
+    .form-address {
+        width: 100%;
+    }
+
+    .cadastro-container {
+        width: 90%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-left, .navbar-right {
+        margin-bottom: 10px;
+    }
+
+    .nav-item {
+        font-size: 18px;
+        margin-right: 20px;
+    }
+
+    .nav-login {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .nav-item {
+        font-size: 16px;
+        margin-right: 15px;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .card-plano {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+
+    .container-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card-cabecalho {
+        width: 100%;
+    }
+
+    .cadastro-mapa {
+        height: 250px;
+    }
 }

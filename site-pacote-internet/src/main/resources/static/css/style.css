@@ -608,3 +608,61 @@ navbar-toggler{
         text-align: center;
     }
 }
+
+@media (max-width: 768px) {
+
+    /* Estilo para a navbar e seus itens */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .navbar-left, .navbar-right {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-item {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    .nav-login {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    /* Ajustes no carrossel para ocupar menos espaço */
+    .carousel-inner img {
+        height: auto;
+        max-height: 300px;
+    }
+
+    /* Estilo para a seção dos cards */
+    .container-card {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 25px;
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza o conteúdo no centro */
+    }
+
+    .card-plano {
+        width: 260px;
+        max-width: 100%;
+        margin: 0; /* Remove qualquer margem lateral extra */
+    }
+
+    /* Ajuste do footer para telas menores */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+}
