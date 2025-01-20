@@ -13,32 +13,52 @@
 
 <body>
 <header>
-    <nav class="navbar">
-        <div class="navbar-left">
-            <a href="#" class="nav-item">Para sua casa</a>
-            <a href="#" class="nav-item">Para sua empresa</a>
-        </div>
-        <div class="navbar-right">
-            <a href="#" class="nav-login">
-                <i class="fa-solid fa-user"></i>
-                <span class="texto-login">
-                    <p>Faça <span class="login">login</span> ou <span class="cadastro">Crie seu cadastro</span></p>
-                </span>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo2.png" alt="Sua Marca" style="height: 70px;">
+
             </a>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Itens de navegação -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Para sua casa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Para sua empresa</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#conheca" >Planos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Vantagens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dúvidas</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Parte direita com o botão e WhatsApp -->
+            <div class="d-flex">
+                <button class="btn nav-phone" id="abrirPopup">Consulte seu CEP</button>
+                <a href="https://wa.me/5511980008080" class="btn nav-whatsapp"><i class="fab fa-whatsapp"></i> (11) 98000-8080</a>
+            </div>
         </div>
     </nav>
+
+    <!-- Adicione o script do Bootstrap e do Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <div class="navbar-underline"></div>
-    <nav class="navbar-sub">
-        <div class="navbar-sub-left">
-            <a href="#" class="nav-sub-item">Planos</a>
-            <a href="#" class="nav-sub-item">Vantagens</a>
-            <a href="#" class="nav-sub-item">Dúvidas</a>
-        </div>
-        <div class="navbar-sub-right">
-            <a href="tel:+5511980008080" class="nav-phone"><i class="fa-solid fa-phone"></i> (11) 98000-8080</a>
-            <a href="https://wa.me/5511980008080" class="nav-whatsapp"><i class="fa-brands fa-whatsapp"></i> (11) 98000-8080</a>
-        </div>
-    </nav>
+
 </header>
 
 <main class="cadastro-container">

@@ -31,21 +31,6 @@ body {
     margin-right: 30px;
 }
 
-.nav-login {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    margin-left: 30px;
-    margin-right: 30px;
-}
-
-.nav-login i {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
 .navbar-underline {
     background-color: #8DC07E;
     height: 6px;
@@ -72,6 +57,11 @@ body {
 .navbar-sub-right {
     margin-left: auto;
 }
+.navbar-nav{
+    --bs-nav-link-color:unset !important;
+    --bs-nav-link-hover-color:unset !important;
+    --bs-nav-link-disabled-color:unset !important;
+}
 
 .nav-sub-item {
     color: white;
@@ -93,21 +83,32 @@ body {
     border-radius: 20px;
     text-decoration: none;
     color: white;
-    margin-left: 12px;
+    margin-left: 25px;
     font-size: 18px;
 }
 
 .nav-phone {
-    background-color: #8DC07E;
+    background-color: #8DC07E !important;
+    color: #fff !important;
 }
 
 .nav-whatsapp {
-    background-color: #ffffff;
-    color: #8DC07E;
+    background-color: #ffffff !important;
+    color: #8DC07E !important;
 }
 
 .nav-whatsapp i {
     color: #8DC07E;
+}
+
+.btn{
+    padding: 10px 20px !important;
+    border-radius: 20px !important;
+    text-decoration: none !important;
+}
+
+.navbar-toggler{
+    color: #FFFFFF !important;
 }
 
 .cadastro-container {
@@ -116,7 +117,7 @@ body {
     padding: 20px;
     margin: 20px auto;
     width: 80%;
-    background-color: #fff; /* Fundo branco para o container de cadastro */
+    background-color: #d5d4fa; /* Fundo branco para o container de cadastro */
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
