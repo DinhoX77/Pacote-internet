@@ -125,6 +125,76 @@ body {
     width: 100%;
 }
 
+/* Vantagens */
+.vantagens {
+    background-color: #d5d4fa;
+    padding: 60px 0;
+}
+
+.vantagens .titulo-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.vantagens .titulo-parte1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.vantagens .titulo-parte2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.vantagens .vantagem-item {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.vantagens .vantagem-item i {
+    font-size: 40px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.vantagens .vantagem-item h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.vantagens .vantagem-item p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Dúvidas */
+.duvidas {
+  background-color: #f1f1f1; /* Cor de fundo da seção */
+  padding: 3rem 0; /* Ajuste do padding para a seção */
+}
+
+.duvidas .accordion-button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.duvidas .accordion-button:not(.collapsed) {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.duvidas .accordion-body {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 .planos-5g {
     display: flex;
     justify-content: center;
