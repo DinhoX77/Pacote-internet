@@ -40,10 +40,10 @@
                         <a class="nav-link" href="#conheca" >Planos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Vantagens</a>
+                        <a class="nav-link" href="#vantagens">Vantagens</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dúvidas</a>
+                        <a class="nav-link" href="#duvidas">Dúvidas</a>
                     </li>
                 </ul>
             </div>
@@ -105,22 +105,18 @@
     </button>
 </div>
 
-<!-- Seção Vantagens -->
 <div id="vantagens" class="vantagens">
     <div class="container">
         <div class="box">
             <div class="box-content">
                 <div class="titulo-container">
-                    <span class="titulo-parte1">Por que escolher o</span>
-                    <span class="titulo-parte2">João Net</span>
+                    <span class="titulo-parte2">Benefício de Contratação</span>
                 </div>
-            </div>
-            <div class="box-icon">
-                <i class="fas fa-check-circle"></i>
             </div>
         </div>
 
-        <div class="row">
+        <!-- Novo contêiner para agrupar os itens -->
+        <div class="vantagens-container">
             <div class="col-md-4">
                 <div class="vantagem-item">
                     <i class="fas fa-bolt"></i>
@@ -305,15 +301,15 @@
 <!-- Dúvidas -->
 <section id="duvidas" class="duvidas py-5">
     <div class="container">
-        <h2 class="text-center mb-4">Dúvidas Frequentes</h2>
+        <h2 class="text-center mb-4" style="color: white;">Dúvidas Frequentes</h2>
         <div class="accordion" id="accordionDúvidas">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                         Como posso contratar um plano?
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionDúvidas">
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionDúvidas">
                     <div class="accordion-body">
                         Você pode contratar um plano diretamente pelo nosso site, escolhendo a opção que mais se adapta às suas necessidades e realizando o pagamento online.
                     </div>
@@ -346,6 +342,27 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let accordionHeaders = document.querySelectorAll(".accordion-header");
+
+        accordionHeaders.forEach(header => {
+            let button = header.querySelector("button");
+            let targetId = button.getAttribute("data-bs-target");
+            let collapseItem = new bootstrap.Collapse(targetId, { toggle: false });
+
+            header.addEventListener("mouseover", function () {
+                collapseItem.show();
+            });
+
+            header.addEventListener("mouseleave", function () {
+                collapseItem.hide();
+            });
+        });
+    });
+</script>
+
 
 <footer class="site-footer">
     <div class="footer-container">

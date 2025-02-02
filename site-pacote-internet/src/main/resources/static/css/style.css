@@ -33,7 +33,7 @@ body {
 }
 
 .navbar-underline {
-    background-color: #8DC07E;
+    background-color: #2ECC00;
     height: 6px;
     width: 100%;
 }
@@ -89,17 +89,17 @@ body {
 }
 
 .nav-phone {
-    background-color: #8DC07E !important;
+    background-color: #2ECC00 !important;
     color: #fff !important;
 }
 
 .nav-whatsapp {
     background-color: #ffffff !important;
-    color: #8DC07E !important;
+    color: #2ECC00 !important;
 }
 
 .nav-whatsapp i {
-    color: #8DC07E;
+    color: #2ECC00;
 }
 
 .btn{
@@ -127,7 +127,7 @@ body {
 
 /* Vantagens */
 .vantagens {
-    background-color: #d5d4fa;
+    background-color: #000045;
     padding: 60px 0;
 }
 
@@ -139,7 +139,7 @@ body {
 .vantagens .titulo-parte1 {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #fff;
 }
 
 .vantagens .titulo-parte2 {
@@ -148,32 +148,56 @@ body {
     color: #007bff;
 }
 
-.vantagens .vantagem-item {
-    text-align: center;
-    margin-bottom: 30px;
+.vantagens-container {
+    background-color: #0A0A64; /* Cor de fundo do retângulo */
+    border-radius: 30px; /* Cantos arredondados */
+    padding: 20px;
+    display: flex;
+    justify-content: space-around; /* Distribui os itens uniformemente */
+    align-items: center;
 }
+
+.vantagem-item {
+    background: none; /* Remove fundo individual */
+    border: none; /* Remove borda individual */
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.vantagem-item h5 {
+    color: #2ECC00; /* Cor verde do título */
+    font-weight: bold;
+}
+
+.vantagem-item i {
+    font-size: 30px;
+    color: #2ECC00; /* Ícone verde */
+    margin-bottom: 10px;
+}
+
 
 .vantagens .vantagem-item i {
     font-size: 40px;
-    color: #007bff;
+    color: #2ECC00;
     margin-bottom: 15px;
 }
 
 .vantagens .vantagem-item h5 {
     font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: #fff;
     margin-bottom: 10px;
 }
 
 .vantagens .vantagem-item p {
-    color: #666;
+    color: #fff;
     font-size: 14px;
 }
 
 /* Dúvidas */
 .duvidas {
-  background-color: #f1f1f1; /* Cor de fundo da seção */
+  background-color: #000045; /* Cor de fundo da seção */
   padding: 3rem 0; /* Ajuste do padding para a seção */
 }
 
@@ -228,7 +252,7 @@ body {
 
 .planos-5g .titulo-parte1 {
     font-size: 36px;
-    color: rgba(141, 192, 126, 1);
+    color: #2ECC00;
     margin-bottom: -20px;
     margin-right: 135px;
 }
@@ -304,7 +328,7 @@ body {
 }
 
 .texto-velocidade .numero {
-    color: #8DC07E;
+    color: #2ECC00;
     font-family: Passion One, sans-serif;
     font-size: 32px;
 }
@@ -374,7 +398,7 @@ body {
     top: 290px;
     left: calc(50% - 60px);
     background-color: white;
-    color: #8DC07E;
+    color: #2ECC00;
     font-family: Passion One, sans-serif;
     font-weight: bold;
     font-size: 18px;
@@ -418,7 +442,7 @@ body {
 /* Título do popup */
 .popup h2 {
     font-size: 28px;
-    color: #8DC07E; /* Cor do título em destaque */
+    color: #2ECC00; /* Cor do título em destaque */
     text-align: center;
     margin-bottom: 20px;
 }
@@ -436,7 +460,7 @@ body {
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #8DC07E; /* Borda com a cor do botão */
+    border: 1px solid #2ECC00; /* Borda com a cor do botão */
     border-radius: 5px;
     margin-bottom: 20px;
     box-sizing: border-box;
@@ -446,7 +470,7 @@ body {
 
 /* Botão dentro do popup */
 .popup button {
-    background-color: #8DC07E; /* Cor do botão */
+    background-color: #2ECC00; /* Cor do botão */
     color: white;
     padding: 12px 20px;
     border: none;
@@ -472,7 +496,7 @@ body {
 }
 
 .fechar:hover {
-    color: #8DC07E; /* Cor ao passar o mouse */
+    color: #2ECC00; /* Cor ao passar o mouse */
 }
 
 /* Mapa */
@@ -487,7 +511,7 @@ body {
 .btn-cep {
     padding: 7px 20px;
     font-size: 20px;
-    background-color: #8DC07E;  /* Cor de fundo */
+    background-color: #2ECC00;  /* Cor de fundo */
     color: white;
     border: none;
     border-radius: 20px;  /* Bordas arredondadas */
