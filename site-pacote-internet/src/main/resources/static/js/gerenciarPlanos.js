@@ -1,18 +1,9 @@
-// Simulando dados de planos para teste enquanto o backend não está pronto
-const planos = [
-    { id: 1, nome: 'Plano 100Mb', velocidade: 100, preco: 99.90 },
-    { id: 2, nome: 'Plano 200Mb', velocidade: 200, preco: 149.90 },
-    { id: 3, nome: 'Plano 300Mb', velocidade: 300, preco: 199.90 }
-];
-
 // Função para buscar planos e preencher a tabela
 function fetchPlans() {
-    // Simulando a resposta da API com um delay
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(planos);
-        }, 500);
-    }).then(data => {
+    // Fazendo uma requisição para o back-end para buscar os planos
+    fetch('/planos')
+    .then(response => response.json())
+    .then(data => {
         const tableBody = document.getElementById('plans-body');
         tableBody.innerHTML = ''; // Limpa a tabela antes de adicionar os planos
 
@@ -48,17 +39,21 @@ function openAddPlanModal() {
 
 // Função para abrir o modal com os dados do plano para editar
 function editPlan(planId) {
-    const plan = planos.find(p => p.id === planId);
-    if (plan) {
-        document.getElementById('modal-title').textContent = 'Editar Plano';
-        document.getElementById('plan-name').value = plan.nome;
-        document.getElementById('plan-speed').value = plan.velocidade;
-        document.getElementById('plan-price').value = plan.preco;
-        document.getElementById('plan-id').value = plan.id;
-        document.getElementById('plan-modal').style.display = 'block';
-    } else {
-        alert('Plano não encontrado.');
-    }
+    // Buscar o plano diretamente do back-end
+    fetch(`/planos/${planId}`)
+    .then(response => response.json())
+    .then(plan => {
+        if (plan) {
+            document.getElementById('modal-title').textContent = 'Editar Plano';
+            document.getElementById('plan-name').value = plan.nome;
+            document.getElementById('plan-speed').value = plan.velocidade;
+            document.getElementById('plan-price').value = plan.preco;
+            document.getElementById('plan-id').value = plan.id;
+            document.getElementById('plan-modal').style.display = 'block';
+        } else {
+            alert('Plano não encontrado.');
+        }
+    }).catch(error => console.error('Erro ao carregar plano para edição:', error));
 }
 
 // Função para fechar o modal
@@ -79,27 +74,38 @@ document.getElementById('plan-form').addEventListener('submit', function(event) 
 
     if (planId) {
         // Editando um plano existente
-        const planIndex = planos.findIndex(p => p.id == planId);
-        if (planIndex > -1) {
-            planos[planIndex] = { ...planos[planIndex], ...planData };
-        }
+        fetch(`/planos/${planId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(planData)
+        })
+        .then(() => fetchPlans())
+        .catch(error => console.error('Erro ao editar o plano:', error));
     } else {
         // Adicionando novo plano
-        planData.id = planos.length + 1; // Gerando um ID fictício
-        planos.push(planData);
+        fetch('/planos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(planData)
+        })
+        .then(() => fetchPlans())
+        .catch(error => console.error('Erro ao adicionar o plano:', error));
     }
 
-    fetchPlans(); // Atualiza a lista de planos
     closeModal(); // Fecha o modal
 });
 
 // Função para excluir um plano
 function deletePlan(planId) {
     if (confirm('Tem certeza que deseja excluir este plano?')) {
-        const planIndex = planos.findIndex(p => p.id === planId);
-        if (planIndex > -1) {
-            planos.splice(planIndex, 1); // Remove o plano da lista
-        }
-        fetchPlans(); // Atualiza a lista de planos
+        fetch(`/planos/${planId}`, {
+            method: 'DELETE'
+        })
+        .then(() => fetchPlans())
+        .catch(error => console.error('Erro ao excluir o plano:', error));
     }
 }

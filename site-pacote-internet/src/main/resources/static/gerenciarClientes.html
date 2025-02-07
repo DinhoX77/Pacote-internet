@@ -27,28 +27,7 @@
     </tr>
     </thead>
     <tbody id="clientes-list">
-    <!-- Simulação de clientes cadastrados -->
-    <tr>
-      <td>João Silva</td>
-      <td>123.456.789-00</td>
-      <td>joao.silva@email.com</td>
-      <td>(11) 98765-4321</td>
-      <td>
-        <ul>
-          <li>CEP: 12345-678</li>
-          <li>Cidade: São Paulo</li>
-          <li>Bairro: Centro</li>
-          <li>Rua: Rua A</li>
-          <li>Número: 123</li>
-          <li>Complemento: Apto 45</li>
-        </ul>
-      </td>
-      <td>Plano 100Mb</td>
-      <td>
-        <button onclick="editarCliente(this)">Editar</button>
-        <button onclick="excluirCliente(this)">Excluir</button>
-      </td>
-    </tr>
+    <!-- Lista de clientes será carregada dinamicamente -->
     </tbody>
   </table>
 
@@ -65,10 +44,9 @@
               <input type="text" id="cpf" placeholder="CPF" required>
               <input type="email" id="email" placeholder="E-mail" required>
               <input type="text" id="telefone" placeholder="Telefone" required>
-              <!-- Campo de Plano, colocado após o telefone -->
+              <!-- Campo de Plano -->
               <select id="plano">
-                <option value="Plano 100Mb">Plano 100Mb</option>
-                <option value="Plano 200Mb">Plano 200Mb</option>
+                <!-- Planos serão carregados dinamicamente -->
               </select>
             </div>
           </div>

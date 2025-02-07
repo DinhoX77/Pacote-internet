@@ -14,25 +14,29 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Cliente cadastrarCliente(Cliente cliente) {
-        // Verificando duplicidade de CPF (exemplo de validação)
-        Optional<Cliente> clienteExistente = clienteRepository.findByCpf(cliente.getCpf());
-        if (clienteExistente.isPresent()) {
-            throw new IllegalArgumentException("Já existe um cliente com o CPF fornecido.");
-        }
-
-        // Caso a validação passe, o cliente é salvo
-        return clienteRepository.save(cliente);
-    }
-
-    public List<Cliente> listarClientes() {
+    // Listar todos os clientes
+    public List<Cliente> listarTodos() {
         return clienteRepository.findAll();
     }
 
+    // Buscar cliente por ID
+    public Optional<Cliente> buscarPorId(Long id) {
+        return clienteRepository.findById(id);
+    }
+
+    // Salvar ou atualizar um cliente
     public Cliente salvar(Cliente cliente) {
-        // Salvar o cliente no banco de dados
         return clienteRepository.save(cliente);
     }
 
-
+    // Deletar cliente por ID
+    public void deletar(Long id) {
+        // Verificar se o cliente existe antes de tentar deletar
+        Optional<Cliente> cliente = clienteRepository.findById(id);
+        if (cliente.isPresent()) {
+            clienteRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Cliente não encontrado com ID: " + id);
+        }
+    }
 }
