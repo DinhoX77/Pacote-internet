@@ -32,7 +32,7 @@ body {
 }
 
 .navbar-underline {
-    background-color: #8DC07E;
+    background-color: #2ECC00;
     height: 6px;
     width: 100%;
 }
@@ -88,17 +88,17 @@ body {
 }
 
 .nav-phone {
-    background-color: #8DC07E !important;
+    background-color: #2ECC00 !important;
     color: #fff !important;
 }
 
 .nav-whatsapp {
     background-color: #ffffff !important;
-    color: #8DC07E !important;
+    color: #2ECC00 !important;
 }
 
 .nav-whatsapp i {
-    color: #8DC07E;
+    color: #2ECC00;
 }
 
 .btn{
@@ -150,7 +150,7 @@ body {
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #4CAF50;
+    border-color: #2ECC00;
     outline: none;
 }
 
@@ -162,7 +162,7 @@ body {
 
 .form-actions button {
     padding: 12px 20px;
-    background-color: #4CAF50;
+    background-color: #2ECC00;
     color: white;
     border: none;
     border-radius: 5px;
