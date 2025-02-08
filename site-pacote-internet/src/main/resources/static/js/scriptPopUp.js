@@ -1,113 +1,122 @@
-// Mostra o popup quando o botão for clicado
-document.getElementById('abrirPopup').addEventListener('click', function () {
-    document.getElementById('popupCep').style.display = 'flex';
+document.addEventListener('DOMContentLoaded', function() {
+    // Mapa com OpenStreetMap e Leaflet
+    let mapaSimulacao;
+    let marker;
 
-    // Aguarda um pequeno atraso para garantir que o popup esteja visível
-    setTimeout(function() {
-        mapaSimulacao.invalidateSize(); // Redimensiona o mapa para se ajustar ao container visível
-    }, 300); // 300ms para garantir que o popup tenha tempo de aparecer
-});
+    function initMap() {
+        // Inicializa o mapa com a localização correta da Av. Hamilton, Guarapiranga
+        mapaSimulacao = L.map('mapa').setView([-23.5505, -46.6333], 15); // Coordenadas ajustadas
 
-// Fecha o popup quando o botão de fechar for clicado
-document.getElementById('fecharPopup').addEventListener('click', function () {
-    document.getElementById('popupCep').style.display = 'none';
-});
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Map data © OpenStreetMap contributors'
+        }).addTo(mapaSimulacao);
 
-// Fecha o popup ao clicar fora do conteúdo
-window.addEventListener('click', function (event) {
-    const popup = document.getElementById('popupCep');
-    if (event.target === popup) {
-        popup.style.display = 'none';
+        // Adiciona um marcador inicial na Av. Hamilton
+        marker = L.marker([-23.5505, -46.6333]).addTo(mapaSimulacao);
     }
-});
 
-// Mapa com OpenStreetMap e Leaflet
-let mapaSimulacao;
-let marker;
+    // Inicializa o mapa quando o popup for aberto
+    document.getElementById('abrirPopup').addEventListener('click', function () {
+        document.getElementById('popupCep').style.display = 'flex';
+        setTimeout(function() {
+            initMap(); // Inicializa o mapa no popup
+            mapaSimulacao.invalidateSize(); // Garante que o mapa seja redimensionado corretamente
+        }, 300);
+    });
 
-function initMap() {
-    // Inicializa o mapa com São Paulo como posição inicial
-    mapaSimulacao = L.map('mapa').setView([-23.5505, -46.6333], 13);
+    // Fecha o popup quando o botão de fechar for clicado
+    document.getElementById('fecharPopup').addEventListener('click', function () {
+        document.getElementById('popupCep').style.display = 'none';
+    });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: 'Map data © OpenStreetMap contributors'
-    }).addTo(mapaSimulacao);
+    // Função para buscar endereço por CEP e atualizar o mapa
+    function buscarEndereco() {
+        const cepInput = document.getElementById('cepPopup'); // ID correto para o CEP no popup
+        const mensagem = document.getElementById('mensagem'); // Elemento para exibir a mensagem
+        if (cepInput) {  // Verifica se o input existe
+            const cep = cepInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
 
-    // Adiciona um marcador inicial em São Paulo
-    marker = L.marker([-23.5505, -46.6333]).addTo(mapaSimulacao);
-}
+            if (cep.length === 8) { // Só prosseguir se o CEP tiver 8 dígitos
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            // Exibe a mensagem
+                            mensagem.textContent = 'Entre em contato para verificar se atendemos sua região.';
+                            atualizarMapa(data.logradouro, data.localidade);
+                        } else {
+                            mensagem.textContent = 'CEP não encontrado.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar CEP:', error);
+                        mensagem.textContent = 'Erro ao buscar CEP.';
+                    });
+            } else {
+                mensagem.textContent = 'CEP inválido. Insira um CEP com 8 dígitos.';
+            }
+        } else {
+            console.error('Elemento CEP não encontrado.');
+        }
+    }
 
-// Inicia o mapa no carregamento da página
-window.onload = initMap;
+    // Função para atualizar o mapa com base no endereço completo
+    function atualizarMapa(logradouro, cidade, numero = '') {
+        let enderecoCompleto = logradouro;
+        if (numero) {
+            enderecoCompleto += `, ${numero}`; // Adiciona o número ao endereço
+        }
 
-// Função para buscar endereço por CEP e atualizar o mapa
-function buscarEndereco() {
-    const cep = document.getElementById('cepPopup').value.replace(/\D/g, ''); // Remove caracteres não numéricos
+        const urlNominatim = `https://nominatim.openstreetmap.org/search?format=json` +
+            `&street=${encodeURIComponent(enderecoCompleto)}` +
+            `&city=${encodeURIComponent(cidade)}` +
+            `&state=São+Paulo` +
+            `&country=Brazil`;
 
-    // Só prosseguir se o CEP tiver 8 dígitos
-    if (cep.length === 8) {
-        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        fetch(urlNominatim)
             .then(response => response.json())
-            .then(data => {
-                if (!data.erro) {
-                    // Atualiza o mapa com base no endereço
-                    atualizarMapa(data.logradouro, data.localidade);
+            .then(location => {
+                if (location.length > 0) {
+                    const lat = location[0].lat;
+                    const lon = location[0].lon;
+
+                    // Atualiza o mapa com a nova localização
+                    mapaSimulacao.setView([lat, lon], 15); // Zoom na nova localização
+
+                    // Remove o marcador anterior, se existir
+                    if (marker) {
+                        mapaSimulacao.removeLayer(marker);
+                    }
+
+                    // Adiciona um novo marcador para a nova localização
+                    marker = L.marker([lat, lon]).addTo(mapaSimulacao);
                 } else {
-                    alert('CEP não encontrado.');
+                    document.getElementById('mensagem').textContent = 'Local não encontrado.';
                 }
             })
             .catch(error => {
-                console.error('Erro ao buscar CEP:', error);
-                alert('Erro ao buscar CEP.');
+                console.error('Erro ao buscar coordenadas:', error);
+                document.getElementById('mensagem').textContent = 'Erro ao buscar coordenadas.';
             });
     }
-}
 
-// Função para atualizar o mapa com base no endereço
-function atualizarMapa(logradouro, cidade, numero = '') {
-    let enderecoCompleto = logradouro;
-    if (numero) {
-        enderecoCompleto += `, ${numero}`; // Adiciona o número ao endereço
+    // Associa o evento de clique no botão de buscar
+    document.getElementById('formCep').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita o comportamento padrão de enviar o formulário
+        buscarEndereco(); // Busca o endereço e atualiza o mapa
+    });
+
+    // Formatação de CEP
+    const cepInput = document.getElementById('cepPopup'); // ID correto do campo de CEP no popup
+    if (cepInput) {
+        cepInput.addEventListener('input', function(e) {
+            e.target.value = formatCEP(e.target.value); // Formata o CEP
+        });
     }
 
-    const urlNominatim = `https://nominatim.openstreetmap.org/search?format=json` +
-        `&street=${encodeURIComponent(enderecoCompleto)}` +
-        `&city=${encodeURIComponent(cidade)}` +
-        `&state=São+Paulo` +
-        `&country=Brazil`;
-
-    fetch(urlNominatim)
-        .then(response => response.json())
-        .then(location => {
-            if (location.length > 0) {
-                const lat = location[0].lat;
-                const lon = location[0].lon;
-
-                // Atualiza o mapa com a nova localização
-                mapaSimulacao.setView([lat, lon], 15); // Zoom na nova localização
-
-                // Remove o marcador anterior, se existir
-                if (marker) {
-                    mapaSimulacao.removeLayer(marker);
-                }
-
-                // Adiciona um novo marcador para a nova localização
-                marker = L.marker([lat, lon]).addTo(mapaSimulacao);
-            } else {
-                alert('Local não encontrado.');
-            }
-        })
-        .catch(error => {
-            console.error('Erro ao buscar coordenadas:', error);
-            alert('Erro ao buscar coordenadas.');
-        });
-}
-
-// Associa o evento de busca ao envio do formulário do popup
-document.getElementById('formCep').addEventListener('submit', function (e) {
-    e.preventDefault(); // Impede o envio do formulário
-    buscarEndereco(); // Busca o endereço e atualiza o mapa
+    // Função para formatar o CEP (#####-###)
+    function formatCEP(value) {
+        return value.replace(/\D/g, '').replace(/(\d{5})(\d)/, '$1-$2');
+    }
 });
-
-

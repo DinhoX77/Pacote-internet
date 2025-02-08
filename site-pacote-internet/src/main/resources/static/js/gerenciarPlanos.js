@@ -1,6 +1,5 @@
 // Função para buscar planos e preencher a tabela
 function fetchPlans() {
-    // Fazendo uma requisição para o back-end para buscar os planos
     fetch('/planos')
     .then(response => response.json())
     .then(data => {
@@ -39,7 +38,6 @@ function openAddPlanModal() {
 
 // Função para abrir o modal com os dados do plano para editar
 function editPlan(planId) {
-    // Buscar o plano diretamente do back-end
     fetch(`/planos/${planId}`)
     .then(response => response.json())
     .then(plan => {
@@ -47,7 +45,7 @@ function editPlan(planId) {
             document.getElementById('modal-title').textContent = 'Editar Plano';
             document.getElementById('plan-name').value = plan.nome;
             document.getElementById('plan-speed').value = plan.velocidade;
-            document.getElementById('plan-price').value = plan.preco;
+            document.getElementById('plan-price').value = plan.preco.toFixed(2);
             document.getElementById('plan-id').value = plan.id;
             document.getElementById('plan-modal').style.display = 'block';
         } else {
@@ -69,7 +67,7 @@ document.getElementById('plan-form').addEventListener('submit', function(event) 
     const planData = {
         nome: document.getElementById('plan-name').value,
         velocidade: Number(document.getElementById('plan-speed').value),
-        preco: Number(document.getElementById('plan-price').value)
+        preco: parseFloat(document.getElementById('plan-price').value.replace('R$', '').replace(',', '.'))
     };
 
     if (planId) {
@@ -109,3 +107,17 @@ function deletePlan(planId) {
         .catch(error => console.error('Erro ao excluir o plano:', error));
     }
 }
+
+// Função para aplicar máscara ao campo de preço
+function applyPriceMask() {
+    const priceInput = document.getElementById('plan-price');
+    priceInput.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+        value = (value / 100).toFixed(2) + ''; // Formata como número decimal
+        value = value.replace('.', ','); // Substitui o ponto por vírgula
+        this.value = 'R$ ' + value; // Adiciona o prefixo "R$"
+    });
+}
+
+// Aplicar a máscara quando o modal for aberto
+document.getElementById('plan-price').addEventListener('focus', applyPriceMask);

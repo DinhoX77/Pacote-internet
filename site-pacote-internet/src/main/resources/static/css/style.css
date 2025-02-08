@@ -58,10 +58,11 @@ body {
 .navbar-sub-right {
     margin-left: auto;
 }
-.navbar-nav{
-    --bs-nav-link-color:unset !important;
-    --bs-nav-link-hover-color:unset !important;
-    --bs-nav-link-disabled-color:unset !important;
+
+.navbar-nav {
+    --bs-nav-link-color: unset !important;
+    --bs-nav-link-hover-color: unset !important;
+    --bs-nav-link-disabled-color: unset !important;
 }
 
 .nav-sub-item {
@@ -102,13 +103,13 @@ body {
     color: #2ECC00;
 }
 
-.btn{
+.btn {
     padding: 10px 20px !important;
     border-radius: 20px !important;
     text-decoration: none !important;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     color: #FFFFFF !important;
 }
 
@@ -125,7 +126,6 @@ body {
     width: 100%;
 }
 
-/* Vantagens */
 .vantagens {
     background-color: #000045;
     padding: 60px 0;
@@ -149,33 +149,32 @@ body {
 }
 
 .vantagens-container {
-    background-color: #0A0A64; /* Cor de fundo do retângulo */
-    border-radius: 30px; /* Cantos arredondados */
+    background-color: #0A0A64;
+    border-radius: 30px;
     padding: 20px;
     display: flex;
-    justify-content: space-around; /* Distribui os itens uniformemente */
+    justify-content: space-around;
     align-items: center;
 }
 
 .vantagem-item {
-    background: none; /* Remove fundo individual */
-    border: none; /* Remove borda individual */
+    background: none;
+    border: none;
     color: white;
     text-align: center;
     padding: 10px;
 }
 
 .vantagem-item h5 {
-    color: #2ECC00; /* Cor verde do título */
+    color: #2ECC00;
     font-weight: bold;
 }
 
 .vantagem-item i {
     font-size: 30px;
-    color: #2ECC00; /* Ícone verde */
+    color: #2ECC00;
     margin-bottom: 10px;
 }
-
 
 .vantagens .vantagem-item i {
     font-size: 40px;
@@ -195,28 +194,27 @@ body {
     font-size: 14px;
 }
 
-/* Dúvidas */
 .duvidas {
-  background-color: #000045; /* Cor de fundo da seção */
-  padding: 3rem 0; /* Ajuste do padding para a seção */
+    background-color: #000045;
+    padding: 3rem 0;
 }
 
 .duvidas .accordion-button {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .duvidas .accordion-button:not(.collapsed) {
-  background-color: #007bff;
-  color: #fff;
-  border-color: #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
 }
 
 .duvidas .accordion-body {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .planos-5g {
@@ -282,10 +280,10 @@ body {
     gap: 30px;
     padding: 20px;
 }
+
 .row > * {
     padding-left: calc(var(--bs-gutter-x) * 3.1) !important;
 }
-
 
 .card-plano {
     width: 260px;
@@ -300,6 +298,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .container-card > .card-plano:last-child {
@@ -413,64 +412,59 @@ body {
 .botao-assinar:hover {
     background-color: #f0f0f0;
 }
-/* Estilo do popup */
+
 .popup {
-    display: none; /* Inicialmente oculto */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Garantir que o popup esteja acima de outros conteúdos */
+    z-index: 1000;
 }
 
-/* Conteúdo do popup */
 .popup-conteudo {
-    background-color: #0B0570; /* Cor de fundo do popup igual ao navbar */
+    background-color: #0B0570;
     padding: 30px;
     border-radius: 15px;
     width: 100%;
     max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave */
-    font-family: 'Passion One', sans-serif; /* Fonte consistente */
-    color: #f0f0f0; /* Cor do texto para combinar com o tema */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: 'Passion One', sans-serif;
+    color: #f0f0f0;
 }
 
-/* Título do popup */
 .popup h2 {
     font-size: 28px;
-    color: #2ECC00; /* Cor do título em destaque */
+    color: #2ECC00;
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Rótulos */
 .popup label {
     display: block;
     font-size: 16px;
-    color: #f0f0f0; /* Rótulos em branco */
+    color: #f0f0f0;
     margin-bottom: 10px;
 }
 
-/* Input de texto */
 .popup input[type="text"] {
     width: 100%;
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #2ECC00; /* Borda com a cor do botão */
+    border: 1px solid #2ECC00;
     border-radius: 5px;
     margin-bottom: 20px;
     box-sizing: border-box;
-    background-color: #333; /* Fundo escuro para o input */
-    color: #f0f0f0; /* Cor do texto no input */
+    background-color: #333;
+    color: #f0f0f0;
 }
 
-/* Botão dentro do popup */
 .popup button {
-    background-color: #2ECC00; /* Cor do botão */
+    background-color: #2ECC00;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -482,10 +476,9 @@ body {
 }
 
 .popup button:hover {
-    background-color: #62b3f4; /* Cor de hover para o botão */
+    background-color: #62b3f4;
 }
 
-/* Fechar botão */
 .fechar {
     font-size: 30px;
     cursor: pointer;
@@ -496,10 +489,9 @@ body {
 }
 
 .fechar:hover {
-    color: #2ECC00; /* Cor ao passar o mouse */
+    color: #2ECC00;
 }
 
-/* Mapa */
 #mapa {
     width: 100%;
     height: 300px;
@@ -507,14 +499,13 @@ body {
     border-radius: 5px;
 }
 
-/* Botão de Verificar Disponibilidade */
 .btn-cep {
     padding: 7px 20px;
     font-size: 20px;
-    background-color: #2ECC00;  /* Cor de fundo */
+    background-color: #2ECC00;
     color: white;
     border: none;
-    border-radius: 20px;  /* Bordas arredondadas */
+    border-radius: 20px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -523,10 +514,9 @@ body {
 }
 
 .btn-cep:hover {
-    background-color: #62b3f4;  /* Cor ao passar o mouse */
+    background-color: #62b3f4;
 }
 
-/* Responsividade para dispositivos menores */
 @media (max-width: 768px) {
     .popup-conteudo {
         padding: 20px;
@@ -550,7 +540,6 @@ body {
     }
 }
 
-/* Mantém o estilo existente no desktop */
 .navbar,
 .navbar-sub {
     display: flex;
@@ -567,7 +556,6 @@ body {
     margin: 0 10px;
 }
 
-/* Esconde os menus no mobile */
 .menu-toggle {
     display: none;
 }
@@ -578,7 +566,6 @@ body {
     display: flex;
 }
 
-/* Estilo para mobile */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -608,9 +595,11 @@ body {
         display: flex;
     }
 }
-.img_Pag{
-  width: 150px;
+
+.img_Pag {
+    width: 150px;
 }
+
 .site-footer {
     background-color: #0b0570;
     color: #fff;
@@ -689,8 +678,6 @@ body {
 }
 
 @media (max-width: 768px) {
-
-    /* Estilo para a navbar e seus itens */
     .navbar {
         flex-direction: column;
         padding: 10px;
@@ -712,29 +699,26 @@ body {
         font-size: 16px;
     }
 
-    /* Ajustes no carrossel para ocupar menos espaço */
     .carousel-inner img {
         height: auto;
         max-height: 300px;
     }
 
-    /* Estilo para a seção dos cards */
     .container-card {
         display: flex;
         flex-direction: column;
         gap: 15px;
         padding: 25px;
-        justify-content: center; /* Centraliza horizontalmente */
-        align-items: center; /* Centraliza o conteúdo no centro */
+        justify-content: center;
+        align-items: center;
     }
 
     .card-plano {
         width: 260px;
         max-width: 100%;
-        margin: 0; /* Remove qualquer margem lateral extra */
+        margin: 0;
     }
 
-    /* Ajuste do footer para telas menores */
     .footer-container {
         flex-direction: column;
         align-items: center;
