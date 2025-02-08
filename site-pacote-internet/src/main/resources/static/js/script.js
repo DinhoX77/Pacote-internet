@@ -1,5 +1,8 @@
-// Função que carrega os planos do banco de dados e preenche o select
 function carregarPlanos() {
+    // Obtém o id do plano da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const planoId = urlParams.get('id');
+
     fetch("/planos")  // Faz uma requisição GET ao endpoint que retorna os planos
         .then(response => response.json())  // Converte a resposta para JSON
         .then(planos => {
@@ -16,6 +19,12 @@ function carregarPlanos() {
                 const option = document.createElement("option");
                 option.value = plano.id;  // Define o ID do plano como valor
                 option.textContent = `${plano.nome} - R$ ${plano.preco}`;  // Exibe o nome e preço
+
+                // Se o id do plano corresponder ao id da URL, seleciona essa opção
+                if (plano.id == planoId) {
+                    option.selected = true;
+                }
+
                 planoSelect.appendChild(option);
             });
         })

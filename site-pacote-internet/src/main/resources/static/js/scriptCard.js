@@ -28,7 +28,7 @@ function carregarPlanos() {
                                 <span class="preco-valor">${plano.preco.toFixed(2)}</span>
                             </div>
                         </div>
-                        <a href="cadastro.html">
+                        <a href="cadastro.html?id=${plano.id}">
                             <button class="botao-assinar">Assinar</button>
                         </a>
                     </div>
