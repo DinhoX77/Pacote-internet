@@ -1,26 +1,20 @@
+// Função para carregar os planos do banco de dados e preencher o select no formulário
 function carregarPlanos() {
-    // Obtém o id do plano da URL
     const urlParams = new URLSearchParams(window.location.search);
     const planoId = urlParams.get('id');
 
-    fetch("/planos")  // Faz uma requisição GET ao endpoint que retorna os planos
+    fetch("/planos")  // Faz uma requisição GET para buscar os planos
         .then(response => response.json())  // Converte a resposta para JSON
         .then(planos => {
             const planoSelect = document.getElementById("plano");
-
-            // Remove opções antigas (se houver)
-            planoSelect.innerHTML = "";
-
-            // Adiciona uma opção padrão
             planoSelect.innerHTML = "<option value=''>Selecione um Plano</option>";
 
-            // Preenche o select com os planos recebidos do banco de dados
+            // Adiciona os planos recebidos ao select
             planos.forEach(plano => {
                 const option = document.createElement("option");
-                option.value = plano.id;  // Define o ID do plano como valor
-                option.textContent = `${plano.nome} - R$ ${plano.preco}`;  // Exibe o nome e preço
+                option.value = plano.id;
+                option.textContent = `${plano.nome} - R$ ${plano.preco.toFixed(2).replace('.', ',')}`;
 
-                // Se o id do plano corresponder ao id da URL, seleciona essa opção
                 if (plano.id == planoId) {
                     option.selected = true;
                 }
@@ -31,50 +25,75 @@ function carregarPlanos() {
         .catch(error => console.error("Erro ao carregar planos:", error));
 }
 
-// Função que envia os dados do cliente para o back-end
+// Função para cadastrar o cliente no banco de dados
 function cadastrarCliente(event) {
-    event.preventDefault(); // Impede o comportamento padrão do formulário
+    event.preventDefault(); // Impede o envio padrão do formulário
 
-    // Obtendo os dados do formulário
+    // Captura os dados preenchidos no formulário
     const cliente = {
-        nome: document.getElementById("nome").value,
-        cpf: document.getElementById("cpf").value,
-        email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
-        cep: document.getElementById("cep").value,
-        cidade: document.getElementById("cidade").value,
-        bairro: document.getElementById("bairro").value,
-        rua: document.getElementById("rua").value,
-        numero: document.getElementById("numero").value,
-        complemento: document.getElementById("complemento").value,
-        pontoReferencia: document.getElementById("ponto_referencia").value,
+        nome: document.getElementById("nome").value.trim(),
+        cpf: document.getElementById("cpf").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        telefone: document.getElementById("telefone").value.trim(),
+        cep: document.getElementById("cep").value.trim(),
+        cidade: document.getElementById("cidade").value.trim(),
+        bairro: document.getElementById("bairro").value.trim(),
+        rua: document.getElementById("rua").value.trim(),
+        numero: document.getElementById("numero").value.trim(),
+        complemento: document.getElementById("complemento").value.trim(),
+        pontoReferencia: document.getElementById("ponto_referencia").value.trim(),
         tipoImovel: document.getElementById("tipo_imovel").value,
-        plano: { id: document.getElementById("plano").value }  // Envia o ID do plano selecionado
+        plano: { id: document.getElementById("plano").value }
     };
 
-    // Enviar os dados para o back-end como JSON
+    // Validação básica para plano
+    if (!cliente.plano.id) {
+        exibirAlerta("Por favor, selecione um plano.", "erro");
+        return;
+    }
+
+    // Envia os dados do cliente para o back-end
     fetch('/clientes', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cliente)
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Sucesso:', data);
-        // Ações após o sucesso, como redirecionar ou mostrar uma mensagem
-        alert('Cliente cadastrado com sucesso!');
+        console.log('Cliente cadastrado com sucesso:', data);
+        exibirAlerta('Cliente cadastrado com sucesso!', 'sucesso');  // Mostra alerta de sucesso
+        document.getElementById("form-cadastro").reset();  // Limpa o formulário após o sucesso
     })
-    .catch((error) => {
+    .catch(error => {
         console.error('Erro ao cadastrar cliente:', error);
+        exibirAlerta('Ocorreu um erro ao tentar cadastrar o cliente. Tente novamente.', 'erro');  // Mostra alerta de erro
     });
 }
 
-// Chama a função para carregar os planos ao carregar a página
-window.onload = function() {
-    carregarPlanos();
+// Função para exibir o alerta tipo popup
+function exibirAlerta(mensagem, tipo) {
+    const alerta = document.createElement('div');
+    alerta.className = 'alerta-popup';
+    alerta.textContent = mensagem;
 
-    // Atrelar a função de cadastrar cliente ao evento de submit do formulário
-    document.querySelector('form').addEventListener('submit', cadastrarCliente);
+    // Define cor com base no tipo
+    if (tipo === 'sucesso') {
+        alerta.style.backgroundColor = '#4CAF50';  // Verde para sucesso
+    } else if (tipo === 'erro') {
+        alerta.style.backgroundColor = '#f44336';  // Vermelho para erro
+    }
+
+    // Adiciona o alerta ao corpo do documento
+    document.body.appendChild(alerta);
+
+    // Remove o alerta após 5 segundos
+    setTimeout(() => {
+        alerta.remove();
+    }, 5000);
+}
+
+// Chama a função de carregar os planos ao carregar a página
+window.onload = function() {
+    carregarPlanos();  // Carrega os planos no select ao carregar a página
+    document.getElementById('form-cadastro').addEventListener('submit', cadastrarCliente);  // Vincula o evento de submit ao formulário
 };
