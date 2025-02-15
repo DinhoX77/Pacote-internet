@@ -30,8 +30,19 @@ function listarClientes() {
                     <td>${cliente.cpf}</td>
                     <td>${cliente.email}</td>
                     <td>${cliente.telefone}</td>
-                    <td>${cliente.plano.nome}</td>
                     <td>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li>Rua: ${cliente.rua}</li>
+                            <li>Número: ${cliente.numero}</li>
+                            <li>Bairro: ${cliente.bairro}</li>
+                            <li>Cidade: ${cliente.cidade}</li>
+                            <li>CEP: ${cliente.cep}</li>
+                            <li>Complemento: ${cliente.complemento || 'N/A'}</li>
+                            <li>Ponto de Referência: ${cliente.pontoReferencia || 'N/A'}</li>
+                        </ul>
+                    </td>
+                    <td>${cliente.plano.nome}</td>
+                    <td class="table-buttons">
                         <button onclick="editarCliente(${cliente.id})">Editar</button>
                         <button onclick="excluirCliente(${cliente.id})">Excluir</button>
                     </td>
@@ -41,6 +52,7 @@ function listarClientes() {
         })
         .catch(error => console.error('Erro ao listar clientes:', error));
 }
+
 
 // Função que envia os dados do cliente para o back-end (cadastrando ou atualizando)
 function salvarCliente(event) {
@@ -102,44 +114,9 @@ function editarCliente(id) {
             document.getElementById('tipo_imovel').value = cliente.tipoImovel;
             document.getElementById('plano').value = cliente.plano.id;
 
-            // Atualizar cliente ao submeter o formulário
-            document.getElementById('form-cliente').onsubmit = function(event) {
-                event.preventDefault();
-
-                const clienteAtualizado = {
-                    nome: document.getElementById('nome').value,
-                    cpf: document.getElementById('cpf').value,
-                    email: document.getElementById('email').value,
-                    telefone: document.getElementById('telefone').value,
-                    cep: document.getElementById('cep').value,
-                    cidade: document.getElementById('cidade').value,
-                    bairro: document.getElementById('bairro').value,
-                    rua: document.getElementById('rua').value,
-                    numero: document.getElementById('numero').value,
-                    complemento: document.getElementById('complemento').value,
-                    pontoReferencia: document.getElementById('ponto_referencia').value,
-                    tipoImovel: document.getElementById('tipo_imovel').value,
-                    plano: { id: document.getElementById('plano').value }
-                };
-
-                fetch(`/clientes/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(clienteAtualizado)
-                })
-                .then(() => {
-                    alert('Cliente atualizado com sucesso!');
-                    listarClientes();  // Atualiza a lista de clientes
-                    fecharModal();  // Fecha o modal após atualizar
-                })
-                .catch(error => console.error('Erro ao atualizar cliente:', error));
-            };
-
-            abrirModalAdicionar();  // Abrir o modal para edição
+            abrirModalAdicionar();  // Abre o modal para edição
         })
-        .catch(error => console.error('Erro ao carregar cliente para edição:', error));
+        .catch(error => console.error('Erro ao editar cliente:', error));
 }
 
 // Função para excluir cliente
@@ -150,29 +127,26 @@ function excluirCliente(id) {
         })
         .then(() => {
             alert('Cliente excluído com sucesso!');
-            listarClientes();  // Atualizar a lista após exclusão
+            listarClientes();  // Atualizar a lista de clientes
         })
         .catch(error => console.error('Erro ao excluir cliente:', error));
     }
 }
 
-// Funções de abrir e fechar o modal
+// Funções para abrir e fechar o modal
 function abrirModalAdicionar() {
-    const modal = document.getElementById('modal-cliente');
-    modal.style.display = 'block';
+    document.getElementById('modal-cliente').style.display = 'flex';
 }
 
 function fecharModal() {
-    const modal = document.getElementById('modal-cliente');
-    modal.style.display = 'none';
-    document.getElementById('form-cliente').reset();  // Limpa o formulário
+    document.getElementById('modal-cliente').style.display = 'none';
 }
 
-// Carregar os clientes e planos ao carregar a página
-window.onload = function() {
-    carregarPlanos();
+// Listar clientes ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
     listarClientes();
+    carregarPlanos();  // Carregar os planos ao abrir a página
+});
 
-    // Atrelar a função de salvar cliente ao evento de submit do formulário
-    document.querySelector('form').addEventListener('submit', salvarCliente);
-};
+// Event listener para salvar cliente
+document.getElementById('form-cliente').addEventListener('submit', salvarCliente);

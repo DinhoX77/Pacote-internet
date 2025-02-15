@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 90%; /* Aumenta o container para dar mais espaço à tabela */
   margin: 20px auto;
   padding: 20px;
   background-color: white;
@@ -49,13 +49,25 @@ button:hover {
   background-color: #f2f2f2;
 }
 
-#clientes-list ul {
-  padding-left: 20px;
-  margin: 0;
+/* Ajuste na largura da coluna "Ações" */
+#clientes-table th:last-child,
+#clientes-table td:last-child {
+  width: 200px; /* Ajuste para caber os botões */
+  text-align: center;
 }
 
-#clientes-list ul li {
-  font-size: 14px;
+/* Estilização dos botões dentro da tabela */
+#clientes-table td button {
+  margin-right: 5px; /* Pequeno espaço entre os botões */
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* Impedir que o conteúdo da célula se sobreponha */
+#clientes-table td {
+  white-space: nowrap; /* Impede quebra de linha dentro da célula */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Modal */
@@ -75,8 +87,8 @@ button:hover {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  max-width: 1200px; /* Largura do modal ajustada */
-  width: 80%; /* Ajusta a largura do modal para 80% da tela */
+  max-width: 1200px;
+  width: 80%;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
@@ -97,7 +109,7 @@ button:hover {
 
 .form-info,
 .form-address {
-  width: 100%; /* Garantindo que os campos ocupem toda a largura */
+  width: 100%;
 }
 
 .form-group {
@@ -126,23 +138,23 @@ button:hover {
 .form-info select,
 .form-address input,
 .form-address select {
-  width: 100%; /* Diminuindo a largura de cada campo */
+  width: 100%;
 }
 
 .form-address input,
 .form-address select {
-  width: 95%; /* Ajuste na largura da seção de endereço */
+  width: 95%;
 }
 
 /* Campo Ponto de Referência e Complemento */
 .form-group .form-address input,
 .form-group .form-address select {
-  width: 95%; /* Ajustando esses campos para maior largura */
+  width: 95%;
 }
 
-/* Novo campo 'Comércio' */
+/* Campo 'Comércio' */
 .form-group #tipo_imovel {
-  width: 48%; /* Campo tipo_imovel ajustado */
+  width: 48%;
 }
 
 /* Responsividade */
