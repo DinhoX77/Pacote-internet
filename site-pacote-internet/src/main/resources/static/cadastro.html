@@ -72,9 +72,9 @@
                         <div class="form-info">
                             <div class="form-group">
                                 <input type="text" name="nome" id="nome" placeholder="Nome Completo" required>
-                                <input type="text" name="cpf" id="cpf" placeholder="CPF" required>
+                                <input type="text" name="cpf" id="cpf" placeholder="CPF" required maxlength="14">
                                 <input type="email" name="email" id="email" placeholder="E-mail" required>
-                                <input type="text" name="telefone" id="telefone" placeholder="Telefone" required>
+                                <input type="text" name="telefone" id="telefone" placeholder="Telefone" required maxlength="15">
 
                                 <!-- Campo de Plano -->
                                 <select name="plano" id="plano">
@@ -85,7 +85,7 @@
 
                         <div class="form-address">
                             <div class="form-group">
-                                <input type="text" name="cep" id="cep" placeholder="CEP" required>
+                                <input type="text" name="cep" id="cep" placeholder="CEP" required maxlength="9">
                                 <input type="text" name="cidade" id="cidade" placeholder="Cidade" required>
                                 <input type="text" name="bairro" id="bairro" placeholder="Bairro" required>
                                 <input type="text" name="rua" id="rua" placeholder="Rua" required>
@@ -165,5 +165,6 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="js/scriptMaps.js"></script>
 <script src="js/script.js"></script>
+<script src="js/scriptPopUp.js"></script>
 </body>
 </html>
