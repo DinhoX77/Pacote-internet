@@ -13,8 +13,8 @@ import lombok.Setter;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Gerar ID automaticamente
-    private Long id;  // ID agora é um Long auto-incrementável
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
@@ -37,12 +37,13 @@ public class Cliente {
 
     @ManyToOne
     @JoinColumn(name = "plano_id")
-    private Plano plano;  // Associação com o plano escolhido
+    private Plano plano;
 
-    // Construtor padrão
+    // Novo campo: Status
+    private String status = "Novo"; // Padrão "Novo" para novos clientes
+
     public Cliente() {}
 
-    // Construtor com parâmetros (ID é gerado automaticamente)
     public Cliente(String nome, String cpf, String email, String telefone, String cep, String cidade, String bairro,
                    String rua, String numero, String complemento, String pontoReferencia, String tipoImovel, Plano plano) {
         this.nome = nome;
@@ -58,5 +59,6 @@ public class Cliente {
         this.pontoReferencia = pontoReferencia;
         this.tipoImovel = tipoImovel;
         this.plano = plano;
+        this.status = "Novo"; // Sempre inicia como "Novo"
     }
 }

@@ -42,6 +42,7 @@ function listarClientes() {
                         </ul>
                     </td>
                     <td>${cliente.plano.nome}</td>
+                    <td>${cliente.status}</td> <!-- Adicione esta linha para exibir o status -->
                     <td class="table-buttons">
                         <button onclick="editarCliente(${cliente.id})">Editar</button>
                         <button onclick="excluirCliente(${cliente.id})">Excluir</button>
@@ -52,6 +53,7 @@ function listarClientes() {
         })
         .catch(error => console.error('Erro ao listar clientes:', error));
 }
+
 
 
 // Função que envia os dados do cliente para o back-end (cadastrando ou atualizando)

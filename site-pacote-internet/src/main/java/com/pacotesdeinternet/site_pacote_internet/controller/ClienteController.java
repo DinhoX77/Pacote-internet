@@ -42,6 +42,7 @@ public class ClienteController {
         Optional<Plano> plano = planoService.buscarPorId(cliente.getPlano().getId());
         if (plano.isPresent()) {
             cliente.setPlano(plano.get());  // Definindo o plano no cliente
+            cliente.setStatus("Novo");  // Definindo status como "Novo" para clientes recém-criados
             Cliente clienteSalvo = clienteService.salvar(cliente);
             return ResponseEntity.ok(clienteSalvo);  // Retornando o cliente salvo
         } else {
@@ -72,9 +73,7 @@ public class ClienteController {
 
             // Atualizar o plano, se necessário
             Optional<Plano> plano = planoService.buscarPorId(clienteAtualizado.getPlano().getId());
-            if (plano.isPresent()) {
-                cliente.setPlano(plano.get());
-            }
+            plano.ifPresent(cliente::setPlano);
 
             Cliente clienteSalvo = clienteService.salvar(cliente);
             return ResponseEntity.ok(clienteSalvo);

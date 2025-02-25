@@ -31,7 +31,6 @@ public class ClienteService {
 
     // Deletar cliente por ID
     public void deletar(Long id) {
-        // Verificar se o cliente existe antes de tentar deletar
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if (cliente.isPresent()) {
             clienteRepository.deleteById(id);
