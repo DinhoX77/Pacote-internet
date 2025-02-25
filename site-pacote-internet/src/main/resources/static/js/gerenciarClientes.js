@@ -1,3 +1,5 @@
+let clienteIdEditando = null;  // Variável para armazenar o ID do cliente em edição
+
 // Função que carrega os planos do banco de dados e preenche o select
 function carregarPlanos() {
     fetch("/planos")
@@ -42,7 +44,7 @@ function listarClientes() {
                         </ul>
                     </td>
                     <td>${cliente.plano.nome}</td>
-                    <td>${cliente.status}</td> <!-- Adicione esta linha para exibir o status -->
+                    <td>${cliente.status}</td> <!-- Exibe o status -->
                     <td class="table-buttons">
                         <button onclick="editarCliente(${cliente.id})">Editar</button>
                         <button onclick="excluirCliente(${cliente.id})">Excluir</button>
@@ -53,8 +55,6 @@ function listarClientes() {
         })
         .catch(error => console.error('Erro ao listar clientes:', error));
 }
-
-
 
 // Função que envia os dados do cliente para o back-end (cadastrando ou atualizando)
 function salvarCliente(event) {
@@ -76,8 +76,12 @@ function salvarCliente(event) {
         plano: { id: document.getElementById("plano").value }
     };
 
-    fetch('/clientes', {
-        method: 'POST',
+    // Verifica se está editando um cliente ou criando um novo
+    const url = clienteIdEditando ? `/clientes/${clienteIdEditando}` : '/clientes';
+    const method = clienteIdEditando ? 'PUT' : 'POST';
+
+    fetch(url, {
+        method: method,
         headers: {
             'Content-Type': 'application/json',
         },
@@ -86,14 +90,15 @@ function salvarCliente(event) {
     .then(response => response.json())
     .then(data => {
         if (data) {
-            alert('Cliente cadastrado com sucesso!');
+            alert(clienteIdEditando ? 'Cliente atualizado com sucesso!' : 'Cliente cadastrado com sucesso!');
             listarClientes();  // Atualizar a lista de clientes
             fecharModal();  // Fechar o modal após salvar
+            clienteIdEditando = null;  // Limpar o ID após salvar ou atualizar
         } else {
-            console.error('Erro ao cadastrar cliente');
+            console.error('Erro ao salvar cliente');
         }
     })
-    .catch(error => console.error('Erro ao cadastrar cliente:', error));
+    .catch(error => console.error('Erro ao salvar cliente:', error));
 }
 
 // Função para editar cliente
@@ -116,6 +121,7 @@ function editarCliente(id) {
             document.getElementById('tipo_imovel').value = cliente.tipoImovel;
             document.getElementById('plano').value = cliente.plano.id;
 
+            clienteIdEditando = cliente.id;  // Armazena o ID do cliente em edição
             abrirModalAdicionar();  // Abre o modal para edição
         })
         .catch(error => console.error('Erro ao editar cliente:', error));
