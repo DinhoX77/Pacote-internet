@@ -1,12 +1,11 @@
-let clienteIdEditando = null;  // Variável para armazenar o ID do cliente em edição
+let clienteIdEditando = null;
 
-// Função que carrega os planos do banco de dados e preenche o select
 function carregarPlanos() {
     fetch("/planos")
         .then(response => response.json())
         .then(planos => {
             const planoSelect = document.getElementById("plano");
-            planoSelect.innerHTML = "<option value=''>Selecione um Plano</option>"; // Adiciona uma opção padrão
+            planoSelect.innerHTML = "<option value=''>Selecione um Plano</option>";
             planos.forEach(plano => {
                 const option = document.createElement("option");
                 option.value = plano.id;
@@ -17,13 +16,12 @@ function carregarPlanos() {
         .catch(error => console.error("Erro ao carregar planos:", error));
 }
 
-// Função para listar todos os clientes e preencher a tabela
 function listarClientes() {
     fetch("/clientes")
         .then(response => response.json())
         .then(clientes => {
             const tableBody = document.getElementById('clientes-list');
-            tableBody.innerHTML = "";  // Limpar tabela antes de preencher
+            tableBody.innerHTML = "";
 
             clientes.forEach(cliente => {
                 const newRow = document.createElement('tr');
@@ -41,6 +39,7 @@ function listarClientes() {
                             <li>CEP: ${cliente.cep}</li>
                             <li>Complemento: ${cliente.complemento || 'N/A'}</li>
                             <li>Ponto de Referência: ${cliente.pontoReferencia || 'N/A'}</li>
+                            <li>Tipo de Imóvel: ${cliente.tipoImovel || 'N/A'}</li>
                         </ul>
                     </td>
                     <td>${cliente.plano.nome}</td>
@@ -56,9 +55,8 @@ function listarClientes() {
         .catch(error => console.error('Erro ao listar clientes:', error));
 }
 
-// Função que envia os dados do cliente para o back-end (cadastrando ou atualizando)
 function salvarCliente(event) {
-    event.preventDefault();  // Impede o comportamento padrão do formulário
+    event.preventDefault();
 
     const cliente = {
         nome: document.getElementById("nome").value,
@@ -76,7 +74,6 @@ function salvarCliente(event) {
         plano: { id: document.getElementById("plano").value }
     };
 
-    // Verifica se está editando um cliente ou criando um novo
     const url = clienteIdEditando ? `/clientes/${clienteIdEditando}` : '/clientes';
     const method = clienteIdEditando ? 'PUT' : 'POST';
 
@@ -91,9 +88,9 @@ function salvarCliente(event) {
     .then(data => {
         if (data) {
             alert(clienteIdEditando ? 'Cliente atualizado com sucesso!' : 'Cliente cadastrado com sucesso!');
-            listarClientes();  // Atualizar a lista de clientes
-            fecharModal();  // Fechar o modal após salvar
-            clienteIdEditando = null;  // Limpar o ID após salvar ou atualizar
+            listarClientes();
+            fecharModal();
+            clienteIdEditando = null;
         } else {
             console.error('Erro ao salvar cliente');
         }
@@ -101,12 +98,10 @@ function salvarCliente(event) {
     .catch(error => console.error('Erro ao salvar cliente:', error));
 }
 
-// Função para editar cliente
 function editarCliente(id) {
     fetch(`/clientes/${id}`)
         .then(response => response.json())
         .then(cliente => {
-            // Preenche o formulário com os dados do cliente para edição
             document.getElementById('nome').value = cliente.nome;
             document.getElementById('cpf').value = cliente.cpf;
             document.getElementById('email').value = cliente.email;
@@ -121,13 +116,12 @@ function editarCliente(id) {
             document.getElementById('tipo_imovel').value = cliente.tipoImovel;
             document.getElementById('plano').value = cliente.plano.id;
 
-            clienteIdEditando = cliente.id;  // Armazena o ID do cliente em edição
-            abrirModalAdicionar();  // Abre o modal para edição
+            clienteIdEditando = cliente.id;
+            abrirModalAdicionar();
         })
         .catch(error => console.error('Erro ao editar cliente:', error));
 }
 
-// Função para excluir cliente
 function excluirCliente(id) {
     if (confirm('Tem certeza que deseja excluir este cliente?')) {
         fetch(`/clientes/${id}`, {
@@ -141,7 +135,6 @@ function excluirCliente(id) {
     }
 }
 
-// Funções para abrir e fechar o modal
 function abrirModalAdicionar() {
     document.getElementById('modal-cliente').style.display = 'flex';
 }
@@ -150,11 +143,103 @@ function fecharModal() {
     document.getElementById('modal-cliente').style.display = 'none';
 }
 
-// Listar clientes ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     listarClientes();
     carregarPlanos();  // Carregar os planos ao abrir a página
+    aplicarMascaras(); // Aplicar máscaras nos campos
 });
 
-// Event listener para salvar cliente
 document.getElementById('form-cliente').addEventListener('submit', salvarCliente);
+
+function aplicarMascaras() {
+    const cpfInput = document.getElementById('cpf');
+    if (cpfInput) {
+        cpfInput.addEventListener('input', function (e) {
+            e.target.value = formatCPF(e.target.value);
+        });
+    }
+
+    const telefoneInput = document.getElementById('telefone');
+    if (telefoneInput) {
+        telefoneInput.addEventListener('input', function (e) {
+            e.target.value = formatTelefone(e.target.value);
+        });
+    }
+
+    const cepInput = document.getElementById('cep');
+    if (cepInput) {
+        cepInput.addEventListener('input', function (e) {
+            e.target.value = formatCEP(e.target.value);
+        });
+    }
+}
+
+function formatCPF(value) {
+    return value.replace(/\D/g, '')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{2})$/, '$1-$2');
+}
+
+function formatTelefone(value) {
+    return value.replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{5})(\d)/, '$1-$2');
+}
+
+function formatCEP(value) {
+    return value.replace(/\D/g, '')
+        .replace(/(\d{5})(\d)/, '$1-$2');
+}
+
+function aplicarMascaras() {
+    const cpfInput = document.getElementById('cpf');
+    if (cpfInput) {
+        cpfInput.addEventListener('input', function (e) {
+            e.target.value = formatCPF(e.target.value).slice(0, 14);
+        });
+    }
+
+    const telefoneInput = document.getElementById('telefone');
+    if (telefoneInput) {
+        telefoneInput.addEventListener('input', function (e) {
+            e.target.value = formatTelefone(e.target.value).slice(0, 15);
+        });
+    }
+
+    const cepInput = document.getElementById('cep');
+    if (cepInput) {
+        cepInput.addEventListener('input', function (e) {
+            e.target.value = formatCEP(e.target.value).slice(0, 9);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    aplicarMascaras();
+});
+
+function buscarEndereco() {
+    const cep = document.getElementById('cep').value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+    if (cep.length === 8) {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.erro) {
+                    document.getElementById('rua').value = data.logradouro;
+                    document.getElementById('bairro').value = data.bairro;
+                    document.getElementById('cidade').value = data.localidade;
+                } else {
+                    alert('CEP não encontrado.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao buscar CEP:', error);
+                alert('Erro ao buscar CEP.');
+            });
+    }
+}
+
+
+document.getElementById('cep').addEventListener('blur', buscarEndereco);

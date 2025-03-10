@@ -1,4 +1,4 @@
-package com.pacotesdeinternet.site_pacote_internet.Security;
+package com.pacotesdeinternet.site_pacote_internet.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +31,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/")
                         .permitAll()
                 )
-                .csrf(csrf -> csrf.disable()) // Forma correta de desabilitar CSRF
+                .csrf(csrf -> csrf.disable())
                 .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin())); // Permite uso de frames para H2 Console
 
         return http.build();
