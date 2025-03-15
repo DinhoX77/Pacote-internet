@@ -1,4 +1,4 @@
-package com.pacotesdeinternet.site_pacote_internet.security;
+package com.pacotesdeinternet.site_pacote_internet.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
