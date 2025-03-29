@@ -35,29 +35,29 @@ public class ClienteController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Criar um novo cliente
+
     @PostMapping
     public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente) {
-        // Buscando o plano pelo ID fornecido no cliente
+
         Optional<Plano> plano = planoService.buscarPorId(cliente.getPlano().getId());
         if (plano.isPresent()) {
-            cliente.setPlano(plano.get());  // Definindo o plano no cliente
-            cliente.setStatus("Novo");  // Definindo status como "Novo" para clientes recém-criados
+            cliente.setPlano(plano.get());
+            cliente.setStatus("Novo");
             Cliente clienteSalvo = clienteService.salvar(cliente);
-            return ResponseEntity.ok(clienteSalvo);  // Retornando o cliente salvo
+            return ResponseEntity.ok(clienteSalvo);
         } else {
-            // Retornar 404 se o plano não for encontrado
+
             return ResponseEntity.status(404).body(null);
         }
     }
 
-    // Atualizar um cliente existente
+
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente clienteAtualizado) {
         Optional<Cliente> clienteExistente = clienteService.buscarPorId(id);
         if (clienteExistente.isPresent()) {
             Cliente cliente = clienteExistente.get();
-            // Atualizar os dados do cliente
+
             cliente.setNome(clienteAtualizado.getNome());
             cliente.setCpf(clienteAtualizado.getCpf());
             cliente.setEmail(clienteAtualizado.getEmail());
@@ -71,7 +71,7 @@ public class ClienteController {
             cliente.setPontoReferencia(clienteAtualizado.getPontoReferencia());
             cliente.setTipoImovel(clienteAtualizado.getTipoImovel());
 
-            // Atualizar o plano, se necessário
+
             Optional<Plano> plano = planoService.buscarPorId(clienteAtualizado.getPlano().getId());
             plano.ifPresent(cliente::setPlano);
 

@@ -16,7 +16,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/h2-console/**").permitAll() // Permite acesso ao H2 Console
+                        // Permitir acesso sem autenticação para as APIs de clientes e planos
+                        .requestMatchers("/clientes/**", "/planos/**").permitAll()
                         .requestMatchers("/dashBoard.html", "/gerenciarClientes.html", "/gerenciarPlanos.html").authenticated()
                         .requestMatchers("/index.html", "/cadastro.html", "/backOfficeLogin.html").permitAll()
                         .requestMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
@@ -31,8 +32,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/")
                         .permitAll()
                 )
-                .csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin())); // Permite uso de frames para H2 Console
+                .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
